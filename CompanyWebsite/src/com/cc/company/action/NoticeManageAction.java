@@ -97,6 +97,45 @@ public class NoticeManageAction extends ActionSupport {
 	}
 
 	public String updateNotice() {
+		Notice notice = new Notice();
+		notice.setNid(id);
+		Notice updateNotice = noticeService.getNoticeById(notice);
+		updateNotice.setNtitle(title);
+		updateNotice.setNcontent(content);
+
+		Notice newNotice = noticeService.updateNotice(updateNotice);
+		int success = 0;
+		if(newNotice!=null){
+			success = 1;
+			//由于是转发并且js页面刷新,所以无需重查
+		}
+		try {
+			ServletActionContext.getResponse().getWriter().print(success);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException(e.getMessage());
+		}
+		return null;
+	}
+	
+	
+	
+	public String deleteNotice(){
+		Notice notice = new Notice();
+		notice.setNid(id);
+		boolean deleteNotice = noticeService.deleteNotice(notice);
+		int success = 0;
+		if(deleteNotice){
+			success = 1;
+			//由于是转发并且js页面刷新,所以无需重查
+		}
+		try {
+			ServletActionContext.getResponse().getWriter().print(success);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException(e.getMessage());
+		}
+		
 		return null;
 	}
 

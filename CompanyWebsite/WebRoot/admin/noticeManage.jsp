@@ -24,7 +24,7 @@
               <script src="${pageContext.request.contextPath}/js/updateNotice.js"></script>
               <script src="${pageContext.request.contextPath}/js/addNotice.js"></script>
                 <script src="${pageContext.request.contextPath}/js/deleteNotice.js"></script>
-       
+      		  <script src="${pageContext.request.contextPath}/js/getNotice.js"></script>
 </head>
 
 

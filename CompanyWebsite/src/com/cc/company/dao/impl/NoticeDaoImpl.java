@@ -96,4 +96,34 @@ public class NoticeDaoImpl extends HibernateDaoSupport implements NoticeDao {
 		return null;
 	}
 
+	@Override
+	public Notice updateNotice(Notice updateNotice) {
+		Notice newNotice = null;
+		try{
+			this.getHibernateTemplate().clear();
+			//将传入的detached(分离的)状态的对象的属性复制到持久化对象中，并返回该持久化对象
+			newNotice = (Notice) this.getHibernateTemplate().merge(updateNotice);
+			this.getHibernateTemplate().flush();
+		}catch (Throwable e1) {
+			e1.printStackTrace();
+			throw new RuntimeException(e1.getMessage());
+		}
+		return newNotice;
+	}
+
+	@Override
+	public boolean deleteNotice(Notice notice) {
+		boolean b = true;
+		try{
+			this.getHibernateTemplate().clear();
+			this.getHibernateTemplate().delete(notice);
+			this.getHibernateTemplate().flush();
+		}catch  (Throwable e1){
+			b = false;
+			e1.printStackTrace();
+			throw new RuntimeException(e1.getMessage());
+		}
+		return b;
+	}
+
 }

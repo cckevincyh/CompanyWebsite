@@ -11,4 +11,8 @@ public interface NoticeDao {
 
 	public Notice getNoticeById(Notice notice);
 
+	public Notice updateNotice(Notice updateNotice);
+
+	public boolean deleteNotice(Notice notice);
+
 }
