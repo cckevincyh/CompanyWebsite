@@ -43,4 +43,11 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeDao.deleteNotice(notice);
 	}
 
+	@Override
+	public PageBean<Notice> queryNotice(Notice notice, int pageCode,
+			int pageSize) {
+		// TODO Auto-generated method stub
+		return noticeDao.queryNotice(notice,pageCode,pageSize);
+	}
+
 }

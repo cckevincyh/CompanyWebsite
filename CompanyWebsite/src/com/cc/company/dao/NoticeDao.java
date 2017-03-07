@@ -15,4 +15,7 @@ public interface NoticeDao {
 
 	public boolean deleteNotice(Notice notice);
 
+	public PageBean<Notice> queryNotice(Notice notice, int pageCode,
+			int pageSize);
+
 }

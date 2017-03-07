@@ -26,6 +26,13 @@ public class NoticeManageAction extends ActionSupport {
 	private String title;
 	private String content;
 	private int id;
+	private String noticeInfo;
+	
+	
+
+	public void setNoticeInfo(String noticeInfo) {
+		this.noticeInfo = noticeInfo;
+	}
 
 	public void setId(int id) {
 		this.id = id;
@@ -137,6 +144,31 @@ public class NoticeManageAction extends ActionSupport {
 		}
 		
 		return null;
+	}
+	
+	
+	public String queryNotice(){
+		//获取页面传递过来的当前页码数
+		if(pageCode==0){
+			pageCode = 1;
+		}
+		//给pageSize,每页的记录数赋值
+		int pageSize = 5;
+		PageBean<Notice> pb = null;
+		if("".equals(noticeInfo.trim())){
+			pb = noticeService.findNoticeByPage(pageCode,pageSize);
+		}else{
+			Notice notice = new Notice();
+			notice.setNtitle(noticeInfo);
+			pb = noticeService.queryNotice(notice,pageCode,pageSize);
+			
+		}
+		if(pb!=null){
+			pb.setUrl("queryNotice.action?noticeInfo="+noticeInfo+"&");
+		}
+
+		ServletActionContext.getRequest().setAttribute("pb", pb);
+		return "success";
 	}
 
 }

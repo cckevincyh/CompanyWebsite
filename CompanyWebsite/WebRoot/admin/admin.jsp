@@ -63,7 +63,7 @@
                         <a href="${pageContext.request.contextPath}/admin/userManageAction_findUserByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 会员管理</a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/admin/bookTypeManageAction_findBookTypeByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 企业公告管理</a>
+                        <a href="${pageContext.request.contextPath}/admin/noticeManageAction_findNoticeByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 企业公告管理</a>
                     </li>
                     <li>
                         <a href="${pageContext.request.contextPath}/admin/borrowManageAction_findBorrowInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 企业新闻管理</a>
