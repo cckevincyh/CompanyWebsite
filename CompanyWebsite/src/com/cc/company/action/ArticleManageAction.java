@@ -180,12 +180,12 @@ public class ArticleManageAction extends ActionSupport {
 			pb = articleService.findArticleByPage(pageCode,pageSize);
 		}else{
 			Article article = new Article();
-			article.setAtitle(articleInfo);
+			article.setAtitle(articleInfo.trim());
 			pb = articleService.queryArticle(article,pageCode,pageSize);
 			
 		}
 		if(pb!=null){
-			pb.setUrl("queryArticle.action?articleInfo="+articleInfo+"&");
+			pb.setUrl("queryArticle.action?articleInfo="+articleInfo.trim()+"&");
 		}
 
 		ServletActionContext.getRequest().setAttribute("pb", pb);

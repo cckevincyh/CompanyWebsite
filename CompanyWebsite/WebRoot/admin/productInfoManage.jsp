@@ -24,14 +24,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <script src="${pageContext.request.contextPath}/ajax-lib/ajaxutils.js"></script>
            
              <script src="${pageContext.request.contextPath}/js/adminUpdatePwd.js"></script>
-              <script src="${pageContext.request.contextPath}/js/updateProduct.js"></script>
-              <script src="${pageContext.request.contextPath}/js/addProduct.js"></script>
-                <script src="${pageContext.request.contextPath}/js/deleteNotice.js"></script>
-      		  <script src="${pageContext.request.contextPath}/js/getProduct.js"></script>
+              <script src="${pageContext.request.contextPath}/js/updateProductInfo.js"></script>
+              <script src="${pageContext.request.contextPath}/js/addProductInfo.js"></script>
+                <script src="${pageContext.request.contextPath}/js/deleteProductInfo.js"></script>
+      		  <script src="${pageContext.request.contextPath}/js/getProductInfo.js"></script>
       		  
       		  <script type="text/javascript" src="${pageContext.request.contextPath}/jQuery/ajaxfileupload.js"></script>
 				 <script src="${pageContext.request.contextPath}/js/add_ajax_upload.js"></script>
-
+			<script src="${pageContext.request.contextPath}/js/update_ajax_upload.js"></script>
 	  
 </head>
 
@@ -82,11 +82,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <a href="${pageContext.request.contextPath}/admin/articleManageAction_findArticleByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 企业新闻管理</a>
                     </li class="active">
                     <li>
-                        <a href="${pageContext.request.contextPath}/admin/articleManageAction_findProductInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 企业产品管理</a>
+                        <a href="${pageContext.request.contextPath}/admin/productInfoManageAction_findProductInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 企业产品管理</a>
                     </li>
                     
                     <li>
-                        <a href="/library/admin/borrowInfo"><i class="glyphicon glyphicon-chevron-right"></i> 企业信息管理</a>
+                        <a href="${pageContext.request.contextPath}/admin/productInfoManageAction_findProductInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 企业信息管理</a>
                     </li>
                      <li>
                         <a href="/library/admin/return"><i class="glyphicon glyphicon-chevron-right"></i> 留言管理</a>
@@ -104,7 +104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <div class="text-muted bootstrap-admin-box-title">查询</div>
                             </div>
                             <div class="bootstrap-admin-no-table-panel-content bootstrap-admin-panel-content collapse in">
-                                <form class="form-horizontal" action="${pageContext.request.contextPath}/admin/noticeManageAction_queryProductInfo.action" method="post">
+                                <form class="form-horizontal" action="${pageContext.request.contextPath}/admin/productInfoManageAction_queryProductInfo.action" method="post">
                                     <div class="col-lg-5 form-group">
                                         <label class="col-lg-4 control-label" for="query_ano">产品名称</label>
                                         <div class="col-lg-8">
@@ -128,7 +128,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <thead>
                             <tr>
                                 <th>产品图片</th>
-                                <th>产品名称</th>   
+                                <th>产品名称</th>
+                                <th>产品描述</th>    
                                 <th>操作</th>    
                             </tr>
                             </thead>
@@ -138,9 +139,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <s:if test="#request.pb.beanList!=null">
                             <s:iterator value="#request.pb.beanList" var="product">
                              <tbody>
-	                         	   <td><img class="img-rounded" width="100" height="100" src='${pageContext.request.contextPath}/<s:property value="#product.img"/>' /></td>
-	                                <td><s:date name="#product.pname" format="yyyy-MM-dd" /></td>
-	                                <td>
+	                         	   <td width="100" height="100"><img class="img-rounded" width="100" height="100" src='${pageContext.request.contextPath}/<s:property value="#product.img"/>' /></td>
+	                                <td width="100" height="100"><s:property value="#product.pname"/></td>
+	                                <td><s:property value="#product.pdesc"/></td>
+	                                <td width="150" height="100">
 	                               	  <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#findModal" onclick="getProductInfo(<s:property value="#product.pid"/>)" >查看</button>
 	                                	<button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#updateModal" onclick="updateProductInfo(<s:property value="#product.pid"/>)">修改</button>
 	                                	<button type="button" class="btn btn-danger btn-xs" onclick="deleteProductInfo(<s:property value="#product.pid"/>)">删除</button>
@@ -153,6 +155,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             	<tbody>
 	                         	   	<td>暂无数据</td>
 	                                <td>暂无数据</td>
+	                                <td>暂无数据</td> 
 	                                <td>暂无数据</td>                                          
                           	  </tbody>
                             </s:else>
@@ -271,6 +274,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											 <label for="inputfile"></label>
 										    <!--为了jquery获得basePath的值，必须写（如果没有更好的办法） -->
 											<input type="hidden" value="<%=basePath%>" id="addBasePath"/>
+											<input type="hidden" id="addImg"/>
 											<!--id是给jquery使用的，name是给后台action使用的，必须和后台的名字相同！！ -->
 											<input type="file" id="addUpload" name="upload"/><br/>
 										    <p class="help-block"><!--上传成功后图片显示的位置 --><img class="img-rounded" width="100" height="100" id="img1" alt="上传成功" src="" />请上传产品图片</p>
@@ -342,10 +346,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											 <label for="inputfile"></label>
 										     <!--为了jquery获得basePath的值，必须写（如果没有更好的办法） -->
 											<input type="hidden" value="<%=basePath%>" id="updateBasePath"/>
-											<input type="hidden" id="addImg"/>
+											<input type="hidden" id="updateImg"/>
 											<!--id是给jquery使用的，name是给后台action使用的，必须和后台的名字相同！！ -->
 											<input type="file" id="updateUpload" name="upload"/><br/>
-										    <p class="help-block">请上传产品图片</p>
+										    <p class="help-block"><img class="img-rounded" width="100" height="100" id="img2" alt="上传成功" src="" />请上传产品图片</p>
 											</div>
 										</div>
 										
@@ -475,23 +479,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 														&times;
 													</button>
 													<h4 class="modal-title" id="findModalLabel">
-														查看公告详情
+														查看产品详情
 													</h4>
 												</div>
 												<div class="modal-body">
 												
 										<!---------------------表单-------------------->
 										<div class="form-group">
-											<label for="firstname" class="col-sm-2 control-label">公告标题</label>
+											<label for="firstname" class="col-sm-2 control-label">产品名称</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="findTitle" readonly="readonly">
+													<input type="text" class="form-control" id="findName" readonly="readonly">
 												
 												</div>
 										</div>
 										 <div class="form-group">
-											<label for="firstname" class="col-sm-2 control-label">公告内容</label>
+											<label for="firstname" class="col-sm-2 control-label">产品描述</label>
 												<div class="col-sm-9">
-													<textarea class="form-control" id="findContent" rows="10" readonly="readonly"></textarea>
+													<textarea class="form-control" id="findDesc" rows="10" readonly="readonly"></textarea>
 												
 												</div>
 										</div>

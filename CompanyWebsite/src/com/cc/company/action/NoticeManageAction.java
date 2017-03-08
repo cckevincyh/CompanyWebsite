@@ -159,12 +159,12 @@ public class NoticeManageAction extends ActionSupport {
 			pb = noticeService.findNoticeByPage(pageCode,pageSize);
 		}else{
 			Notice notice = new Notice();
-			notice.setNtitle(noticeInfo);
+			notice.setNtitle(noticeInfo.trim());
 			pb = noticeService.queryNotice(notice,pageCode,pageSize);
 			
 		}
 		if(pb!=null){
-			pb.setUrl("queryNotice.action?noticeInfo="+noticeInfo+"&");
+			pb.setUrl("queryNotice.action?noticeInfo="+noticeInfo.trim()+"&");
 		}
 
 		ServletActionContext.getRequest().setAttribute("pb", pb);

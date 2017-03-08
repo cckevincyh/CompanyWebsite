@@ -74,7 +74,7 @@
                         <a href="${pageContext.request.contextPath}/admin/articleManageAction_findArticleByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 企业新闻管理</a>
                     </li>
                     <li>
-                        <a href="/library/admin/return"><i class="glyphicon glyphicon-chevron-right"></i> 企业产品管理</a>
+                        <a href="${pageContext.request.contextPath}/admin/productInfoManageAction_findProductInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 企业产品管理</a>
                     </li>
                     
                     <li>

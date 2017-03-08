@@ -10,14 +10,23 @@
            	http://www.springframework.org/schema/context/spring-context-2.5.xsd
            	http://www.springframework.org/schema/tx 
            	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
-           	
-           	
- 	<import resource="applicationContext-db.xml"/>
-	<import resource="applicationContext-admin.xml"/>
-	<import resource="applicationContext-user-manage.xml"/>
-	<import resource="applicationContext-notice-manage.xml"/>
-	<import resource="applicationContext-article-manage.xml"/>
-	<import resource="applicationContext-fileUpload.xml"/>
-	<import resource="applicationContext-productInfo-manage.xml"/>
-	
+ 
+ 	
+ 	<bean id="productInfoDao" class="com.cc.company.dao.impl.ProductInfoDaoImpl">
+ 		<property name="sessionFactory">
+ 			<ref bean="sessionFactory"/>
+ 		</property>
+ 	</bean>
+ 	
+ 	<bean id="productInfoService" class="com.cc.company.service.impl.ProductInfoServiceImpl">
+ 		<property name="productInfoDao">
+ 			<ref bean="productInfoDao"/>
+ 		</property>
+ 	</bean>
+ 	
+ 	<bean id="productInfoManageAction" class="com.cc.company.action.ProductInfoManageAction" scope="prototype">
+ 		<property name="productInfoService">
+ 			<ref bean="productInfoService"/>
+ 		</property>
+ 	</bean>
  </beans>

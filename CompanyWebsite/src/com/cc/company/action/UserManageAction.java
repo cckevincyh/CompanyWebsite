@@ -153,12 +153,12 @@ public class UserManageAction extends ActionSupport {
 			pb = userService.findUserByPage(pageCode, pageSize);
 		} else {
 			User user = new User();
-			user.setUsername(username);
+			user.setUsername(username.trim());
 			pb = userService.queryUser(user, pageCode, pageSize);
 
 		}
 		if (pb != null) {
-			pb.setUrl("queryUser.action?username=" + username + "&");
+			pb.setUrl("queryUser.action?username=" + username.trim() + "&");
 		}
 
 		ServletActionContext.getRequest().setAttribute("pb", pb);
