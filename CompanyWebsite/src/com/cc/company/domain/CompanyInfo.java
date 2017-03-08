@@ -48,4 +48,10 @@ public class CompanyInfo {
 		this.cdesc = cdesc;
 	}
 
+	@Override
+	public String toString() {
+		return "CompanyInfo [cid=" + cid + ", phone=" + phone + ", location="
+				+ location + ", email=" + email + ", cdesc=" + cdesc + "]";
+	}
+
 }

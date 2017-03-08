@@ -16,5 +16,6 @@
  	<include file="struts2/struts-article-manage.xml"></include>
  	<include file="struts2/struts-fileUpload.xml"></include>
  	<include file="struts2/struts-productInfo-manage.xml"></include>
- 	
+ 	<include file="struts2/struts-companyInfo-manage.xml"></include>
+ 	<include file="struts2/struts-message-manage.xml"></include>
 </struts>	

@@ -25,6 +25,7 @@
               <script src="${pageContext.request.contextPath}/js/addArticle.js"></script>
                 <script src="${pageContext.request.contextPath}/js/deleteArticle.js"></script>
       		  <script src="${pageContext.request.contextPath}/js/getArticle.js"></script>
+      		   <script src="${pageContext.request.contextPath}/js/getMessage.js"></script>
 </head>
 
 
@@ -70,7 +71,7 @@
                     <li>
                         <a href="${pageContext.request.contextPath}/admin/noticeManageAction_findNoticeByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 企业公告管理</a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="${pageContext.request.contextPath}/admin/articleManageAction_findArticleByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 企业新闻管理</a>
                     </li>
                     <li>
@@ -80,8 +81,8 @@
                     <li>
                         <a href="${pageContext.request.contextPath}/admin/companyInfoAction_getCompanyInfo.action"><i class="glyphicon glyphicon-chevron-right"></i> 企业信息管理</a>
                     </li>
-                     <li>
-                        <a href="/library/admin/return"><i class="glyphicon glyphicon-chevron-right"></i> 留言管理</a>
+                     <li class="active">
+                        <a href="${pageContext.request.contextPath}/admin/messageManageAction_findMessageByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 留言管理</a>
                     </li>
                    
                 </ul>
@@ -89,38 +90,16 @@
 
            <!-- content -->
             <div class="col-md-10">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="panel panel-default bootstrap-admin-no-table-panel">
-                            <div class="panel-heading">
-                                <div class="text-muted bootstrap-admin-box-title">查询</div>
-                            </div>
-                            <div class="bootstrap-admin-no-table-panel-content bootstrap-admin-panel-content collapse in">
-                                <form class="form-horizontal" action="${pageContext.request.contextPath}/admin/articleManageAction_queryArticle.action" method="post">
-                                    <div class="col-lg-5 form-group">
-                                        <label class="col-lg-4 control-label" for="query_ano">新闻关键字</label>
-                                        <div class="col-lg-8">
-                                            <input class="form-control" id="query_ano" type="text" id="articleInfo" name="articleInfo">
-                                            <label class="control-label" for="query_ano" style="display: none;"></label>
-                                        </div>
-                                    </div>
                
-                                    <div class="col-lg-2 form-group">
-                                        <button type="submit" class="btn btn-primary" id="btn_query" onclick="query()">查询</button>
-                                        <button type="button" class="btn btn-primary" id="btn_add" data-toggle="modal" data-target="#addModal">添加</button>          
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <table id="data_list" class="table table-hover table-bordered" cellspacing="0" width="100%">
                             <thead>
                             <tr>
-                                <th>新闻标题</th>
-                                <th>发布时间</th>
+                                <th>姓名</th>
+                                <th>联系方式</th>
+                                <th>邮箱</th>
+                                <th>留言时间</th>
                                 <th>操作</th>
                             </tr>
                             </thead>
@@ -128,14 +107,14 @@
                             
                             <!---在此插入信息-->
                             <s:if test="#request.pb.beanList!=null">
-                            <s:iterator value="#request.pb.beanList" var="article">
+                            <s:iterator value="#request.pb.beanList" var="message">
                              <tbody>
-	                         	   <td><s:property value="#article.atitle"/></td>
-	                                <td><s:date name="#article.atime" format="yyyy-MM-dd" /></td>
+	                         	   <td><s:property value="#message.name"/></td>
+	                         	   <td><s:property value="#message.phone"/></td>
+	                         	   <td><s:property value="#message.email"/></td>
+	                                <td><s:date name="#message.mtime" format="yyyy-MM-dd" /></td>
 	                                <td>
-	                               	  <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#findModal" onclick="getArticle(<s:property value="#article.aid"/>)" >查看</button>
-	                                	<button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#updateModal" onclick="updateArticle(<s:property value="#article.aid"/>)">修改</button>
-	                                	<button type="button" class="btn btn-danger btn-xs" onclick="deleteArticle(<s:property value="#article.aid"/>)">删除</button>
+	                               	  <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#findModal" onclick="getMessage(<s:property value="#message.mid"/>)" >查看</button>
 	                                		
 	                               	</td>                                              
                           	  </tbody>
@@ -144,6 +123,8 @@
                             <s:else>
                             	<tbody>
 	                         	   	<td>暂无数据</td>
+	                                <td>暂无数据</td>
+	                                <td>暂无数据</td>
 	                                <td>暂无数据</td>
 	                                <td>暂无数据</td>                                          
                           	  </tbody>
@@ -186,8 +167,8 @@
                         <div class="pull-right"><!--右对齐--->
                            <ul class="pagination">
                            <li class="disabled"><a href="#">第<s:property value="#request.pb.pageCode"/>页/共<s:property value="#request.pb.totaPage"/>页</a></li>
-                           <li><a href="${pageContext.request.contextPath}/admin/articleManageAction_${pb.url }pageCode=1">首页</a></li>
-                           <li><a href="${pageContext.request.contextPath}/admin/articleManageAction_${pb.url }pageCode=${pb.pageCode-1 }">&laquo;</a></li><!-- 上一页 -->
+                           <li><a href="${pageContext.request.contextPath}/admin/messageManageAction_${pb.url }pageCode=1">首页</a></li>
+                           <li><a href="${pageContext.request.contextPath}/admin/messageManageAction_${pb.url }pageCode=${pb.pageCode-1 }">&laquo;</a></li><!-- 上一页 -->
                            <%-- 循环显示页码列表 --%>
 								<c:forEach begin="${begin }" end="${end }" var="i">
 								  <c:choose>
@@ -196,16 +177,16 @@
 								  			<li class="active"><a>${i }</a><li>							 
 								  	</c:when>
 								  	<c:otherwise>
-								  		<li><a href="${pageContext.request.contextPath}/admin/articleManageAction_${pb.url }pageCode=${i}">${i}</a></li>
+								  		<li><a href="${pageContext.request.contextPath}/admin/messageManageAction_${pb.url }pageCode=${i}">${i}</a></li>
 								  	</c:otherwise>
 								  </c:choose>
 								</c:forEach>
 				        	   <%--如果当前页数没到总页数，即没到最后一页,则需要显示下一页 --%>
 							  <c:if test="${pb.pageCode < pb.totaPage }">
-								  <li><a href="${pageContext.request.contextPath}/admin/articleManageAction_${pb.url }pageCode=${pb.pageCode+1}">&raquo;</a></li>
+								  <li><a href="${pageContext.request.contextPath}/admin/messageManageAction_${pb.url }pageCode=${pb.pageCode+1}">&raquo;</a></li>
 							</c:if>
 							<%--否则显示尾页 --%>
-							<li><a href="${pageContext.request.contextPath}/admin/articleManageAction_${pb.url }pageCode=${pb.totaPage}">尾页</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/messageManageAction_${pb.url }pageCode=${pb.totaPage}">尾页</a></li>
 							</ul>
                            </div>
                     </s:if>           
@@ -218,127 +199,7 @@
     
     
     
-    
-    
-    
-    
-    
-    
-    
-     <!--------------------------------------添加的模糊框------------------------>  
-                                 <form class="form-horizontal">   <!--保证样式水平不混乱-->   
-                                        <!-- 模态框（Modal） -->
-									<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-										<div class="modal-dialog modal-lg">
-											<div class="modal-content">
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-														&times;
-													</button>
-													<h4 class="modal-title" id="myModalLabel">
-														添加新闻
-													</h4>
-												</div>
-												<div class="modal-body">
-												
-										<!---------------------表单-------------------->
-										 <div class="form-group">
-											<label for="firstname" class="col-sm-2 control-label">新闻标题</label>
-												<div class="col-sm-9">
-													<input type="text" class="form-control" id="addTitle"  placeholder="请输入新闻标题">
-												
-												</div>
-										</div>
-											
-										<div class="form-group">	
-											<label for="firstname" class="col-sm-2 control-label">新闻内容</label>
-											<div class="col-sm-9">
-											<textarea class="form-control" id="addContent" rows="20"  placeholder="请输入新闻内容"></textarea>
-											</div>
-										</div>
-											
-			
-										<!---------------------表单-------------------->
-									</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-default" data-dismiss="modal">关闭
-													</button>
-													<button type="button" class="btn btn-primary" id="addArticle">
-														添加
-													</button>
-												</div>
-											</div><!-- /.modal-content -->
-										</div><!-- /.modal -->
-									</div>
-
-                                 </form>	
- 								<!--------------------------------------添加的模糊框------------------------>  
- 
- 
- 
- 
-     
-                                     <!-- 修改模态框（Modal） -->
-                                     <!-------------------------------------------------------------->  
-                                
-                                        <!-- 修改模态框（Modal） -->
-                               <form class="form-horizontal">   <!--保证样式水平不混乱-->   
-									<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
-										<div class="modal-dialog modal-lg">
-											<div class="modal-content">
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-														&times;
-													</button>
-													<h4 class="modal-title" id="updateModalLabel">
-														修改新闻
-													</h4>
-												</div>
-												<div class="modal-body">
-												
-										<!---------------------表单-------------------->
-											
-										<div class="form-group">	
-											<label for="firstname" class="col-sm-2 control-label">新闻标题</label>
-												<div class="col-sm-9">
-													<input type="hidden" id="updateId">
-													<input type="text" class="form-control" id="updateTitle">
-												
-												</div>
-										</div>
-											
-										
-										<div class="form-group">	
-											<label for="firstname" class="col-sm-2 control-label">新闻内容</label>
-											<div class="col-sm-9">
-													<textarea class="form-control" id="updateContent" rows="20"  ></textarea>
-											</div>
-										</div>
-										
-										<!---------------------表单-------------------->
-															
-										</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-default" data-dismiss="modal">关闭
-													</button>
-													<button type="button" class="btn btn-primary" id="updateArticle">
-														修改
-													</button>
-												</div>
-											</div><!-- /.modal-content -->
-										</div><!-- /.modal -->
-									</div>
-	
-                                 </form>
-                                   <!-------------------------------------------------------------->
- 
-    
-    
-    
-    
- 
- 
- 
+  
  
     
     <!------------------------------修改密码模糊框-------------------------------->  
@@ -441,21 +302,35 @@
 														&times;
 													</button>
 													<h4 class="modal-title" id="findModalLabel">
-														查看新闻详情
+														查看留言详情
 													</h4>
 												</div>
 												<div class="modal-body">
 												
 										<!---------------------表单-------------------->
 										<div class="form-group">
-											<label for="firstname" class="col-sm-2 control-label">新闻标题</label>
+											<label for="firstname" class="col-sm-2 control-label">姓名</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control" id="findTitle" readonly="readonly">
+													<input type="text" class="form-control" id="findName" readonly="readonly">
+												
+												</div>
+										</div>
+										<div class="form-group">
+											<label for="firstname" class="col-sm-2 control-label">联系方式</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" id="findPhone" readonly="readonly">
+												
+												</div>
+										</div>
+										<div class="form-group">
+											<label for="firstname" class="col-sm-2 control-label">邮箱</label>
+												<div class="col-sm-9">
+													<input type="text" class="form-control" id="findEmail" readonly="readonly">
 												
 												</div>
 										</div>
 										 <div class="form-group">
-											<label for="firstname" class="col-sm-2 control-label">新闻内容</label>
+											<label for="firstname" class="col-sm-2 control-label">留言内容</label>
 												<div class="col-sm-9">
 													<textarea class="form-control" id="findContent" rows="20" readonly="readonly"></textarea>
 												

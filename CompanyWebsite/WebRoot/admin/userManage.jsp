@@ -77,7 +77,7 @@
                     </li>
                     
                     <li>
-                        <a href="/library/admin/borrowInfo"><i class="glyphicon glyphicon-chevron-right"></i> 企业信息管理</a>
+                        <a href="${pageContext.request.contextPath}/admin/companyInfoAction_getCompanyInfo.action"><i class="glyphicon glyphicon-chevron-right"></i> 企业信息管理</a>
                     </li>
                      <li>
                         <a href="/library/admin/return"><i class="glyphicon glyphicon-chevron-right"></i> 留言管理</a>
