@@ -16,4 +16,5 @@
 	<import resource="applicationContext-admin.xml"/>
 	<import resource="applicationContext-user-manage.xml"/>
 	<import resource="applicationContext-notice-manage.xml"/>
+	<import resource="applicationContext-article-manage.xml"/>
  </beans>

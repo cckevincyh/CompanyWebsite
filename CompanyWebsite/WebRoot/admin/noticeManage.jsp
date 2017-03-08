@@ -71,7 +71,7 @@
                         <a href="${pageContext.request.contextPath}/admin/noticeManageAction_findNoticeByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 企业公告管理</a>
                     </li>
                     <li >
-                        <a href="/library/admin/borrow"><i class="glyphicon glyphicon-chevron-right"></i> 企业新闻管理</a>
+                        <a href="${pageContext.request.contextPath}/admin/articleManageAction_findArticleByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 企业新闻管理</a>
                     </li>
                     <li>
                         <a href="/library/admin/return"><i class="glyphicon glyphicon-chevron-right"></i> 企业产品管理</a>
@@ -229,7 +229,7 @@
                                  <form class="form-horizontal">   <!--保证样式水平不混乱-->   
                                         <!-- 模态框（Modal） -->
 									<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-										<div class="modal-dialog">
+										<div class="modal-dialog modal-lg">
 											<div class="modal-content">
 												<div class="modal-header">
 													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -243,17 +243,17 @@
 												
 										<!---------------------表单-------------------->
 										 <div class="form-group">
-											<label for="firstname" class="col-sm-3 control-label">公告标题</label>
-												<div class="col-sm-7">
+											<label for="firstname" class="col-sm-2 control-label">公告标题</label>
+												<div class="col-sm-9">
 													<input type="text" class="form-control" id="addTitle"  placeholder="请输入公告标题">
 												
 												</div>
 										</div>
 											
 										<div class="form-group">	
-											<label for="firstname" class="col-sm-3 control-label">公告内容</label>
-											<div class="col-sm-7">
-											<textarea class="form-control" id="addContent" rows="5"  placeholder="请输入公告内容"></textarea>
+											<label for="firstname" class="col-sm-2 control-label">公告内容</label>
+											<div class="col-sm-9">
+											<textarea class="form-control" id="addContent" rows="10"  placeholder="请输入公告内容"></textarea>
 											</div>
 										</div>
 											
@@ -284,7 +284,7 @@
                                         <!-- 修改模态框（Modal） -->
                                <form class="form-horizontal">   <!--保证样式水平不混乱-->   
 									<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
-										<div class="modal-dialog">
+										<div class="modal-dialog modal-lg">
 											<div class="modal-content">
 												<div class="modal-header">
 													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -299,8 +299,8 @@
 										<!---------------------表单-------------------->
 											
 										<div class="form-group">	
-											<label for="firstname" class="col-sm-3 control-label">公告标题</label>
-												<div class="col-sm-7">
+											<label for="firstname" class="col-sm-2 control-label">公告标题</label>
+												<div class="col-sm-9">
 													<input type="hidden" id="updateId">
 													<input type="text" class="form-control" id="updateTitle">
 												
@@ -309,9 +309,9 @@
 											
 										
 										<div class="form-group">	
-											<label for="firstname" class="col-sm-3 control-label">公告内容</label>
-											<div class="col-sm-7">
-													<textarea class="form-control" id="updateContent" rows="5"  ></textarea>
+											<label for="firstname" class="col-sm-2 control-label">公告内容</label>
+											<div class="col-sm-9">
+													<textarea class="form-control" id="updateContent" rows="10"  ></textarea>
 											</div>
 										</div>
 										
@@ -434,7 +434,7 @@
                                  <form class="form-horizontal">   <!--保证样式水平不混乱-->   
                                         <!-- 模态框（Modal） -->
 									<div class="modal fade" id="findModal" tabindex="-1" role="dialog" aria-labelledby="findModalLabel" aria-hidden="true">
-										<div class="modal-dialog">
+										<div class="modal-dialog modal-lg">
 											<div class="modal-content">
 												<div class="modal-header">
 													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -448,16 +448,16 @@
 												
 										<!---------------------表单-------------------->
 										<div class="form-group">
-											<label for="firstname" class="col-sm-3 control-label">公告标题</label>
-												<div class="col-sm-7">
+											<label for="firstname" class="col-sm-2 control-label">公告标题</label>
+												<div class="col-sm-9">
 													<input type="text" class="form-control" id="findTitle" readonly="readonly">
 												
 												</div>
 										</div>
 										 <div class="form-group">
-											<label for="firstname" class="col-sm-3 control-label">公告内容</label>
-												<div class="col-sm-7">
-													<textarea class="form-control" id="findContent" rows="5" readonly="readonly"></textarea>
+											<label for="firstname" class="col-sm-2 control-label">公告内容</label>
+												<div class="col-sm-9">
+													<textarea class="form-control" id="findContent" rows="10" readonly="readonly"></textarea>
 												
 												</div>
 										</div>
