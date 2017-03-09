@@ -50,4 +50,10 @@ public class ArticleServiceImpl implements ArticleService {
 		return articleDao.queryArticle(article,pageCode,pageSize);
 	}
 
+	@Override
+	public Article getNewArticle() {
+		// TODO Auto-generated method stub
+		return articleDao.getNewArticle();
+	}
+
 }

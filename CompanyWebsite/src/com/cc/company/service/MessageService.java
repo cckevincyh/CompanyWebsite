@@ -9,4 +9,6 @@ public interface MessageService {
 
 	public Message getMessageById(Message message);
 
+	public boolean addMessage(Message message);
+
 }

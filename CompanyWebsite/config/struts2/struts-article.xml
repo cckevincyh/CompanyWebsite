@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+  <package name="article" extends="struts-default" namespace="/">
+  	<action name="articleAction_*" method="{1}" class="articleAction">
+  		<result name="success">article.jsp</result>
+  	</action>
+  </package>
+  
+
+  
+</struts>	

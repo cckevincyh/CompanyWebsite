@@ -11,6 +11,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.cc.company.dao.ArticleDao;
 import com.cc.company.domain.Article;
+import com.cc.company.domain.Notice;
 import com.cc.company.domain.PageBean;
 
 public class ArticleDaoImpl extends HibernateDaoSupport implements ArticleDao {
@@ -164,6 +165,15 @@ public class ArticleDaoImpl extends HibernateDaoSupport implements ArticleDao {
 			throw new RuntimeException(e1.getMessage());
 		}
 		return null;
+	}
+
+	@Override
+	public Article getNewArticle() {
+		// 不支持limit分页
+		String hql = "from Article order by aid desc";
+		// 分页查询
+		List articleList = doSplitPage(hql, 1, 1);
+		return (Article)articleList.get(0);
 	}
 
 }

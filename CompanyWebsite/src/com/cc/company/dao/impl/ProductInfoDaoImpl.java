@@ -168,6 +168,15 @@ public class ProductInfoDaoImpl extends HibernateDaoSupport implements
 		}
 		return null;
 	}
+
+	@Override
+	public List<ProductInfo> getProductImg(int size) {
+		// 不支持limit分页
+		String hql = "from ProductInfo order by pid desc";
+		// 分页查询
+		List<ProductInfo> productInfoList = doSplitPage(hql, 1, size);
+		return productInfoList;
+	}
 	
 
 }

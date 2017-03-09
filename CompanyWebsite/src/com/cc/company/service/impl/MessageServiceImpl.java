@@ -25,4 +25,10 @@ public class MessageServiceImpl implements MessageService {
 		return messageDao.getMessageById(message);
 	}
 
+	@Override
+	public boolean addMessage(Message message) {
+		// TODO Auto-generated method stub
+		return messageDao.addMessage(message);
+	}
+
 }

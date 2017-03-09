@@ -1,5 +1,7 @@
 package com.cc.company.service;
 
+import java.util.List;
+
 import com.cc.company.domain.PageBean;
 import com.cc.company.domain.ProductInfo;
 
@@ -18,5 +20,7 @@ public interface ProductInfoService {
 
 	public PageBean<ProductInfo> queryProductInfo(ProductInfo productInfo,
 			int pageCode, int pageSize);
+
+	public List<ProductInfo> getProductImg(int size);
 
 }

@@ -9,4 +9,6 @@ public interface MessageDao {
 
 	public Message getMessageById(Message message);
 
+	public boolean addMessage(Message message);
+
 }

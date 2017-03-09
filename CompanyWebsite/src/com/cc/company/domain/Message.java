@@ -59,4 +59,21 @@ public class Message {
 		this.mcontent = mcontent;
 	}
 
+	public Message(String mcontent, Date mtime, String name, String phone,
+			String email) {
+		super();
+		this.mcontent = mcontent;
+		this.mtime = mtime;
+		this.name = name;
+		this.phone = phone;
+		this.email = email;
+	}
+
+	public Message() {
+
+	}
+	
+	
+
+	
 }

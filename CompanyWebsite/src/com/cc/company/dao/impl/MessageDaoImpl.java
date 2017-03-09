@@ -80,4 +80,19 @@ public class MessageDaoImpl extends HibernateDaoSupport implements MessageDao {
 		return null;
 	}
 
+	@Override
+	public boolean addMessage(Message message) {
+		boolean b = true;
+		try {
+			this.getHibernateTemplate().clear();
+			this.getHibernateTemplate().save(message);
+			this.getHibernateTemplate().flush();
+		} catch (Throwable e1) {
+			b = false;
+			e1.printStackTrace();
+			throw new RuntimeException(e1.getMessage());
+		}
+		return b;
+	}
+
 }

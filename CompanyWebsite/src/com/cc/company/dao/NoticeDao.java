@@ -18,4 +18,6 @@ public interface NoticeDao {
 	public PageBean<Notice> queryNotice(Notice notice, int pageCode,
 			int pageSize);
 
+	public Notice getNewNotice();
+
 }

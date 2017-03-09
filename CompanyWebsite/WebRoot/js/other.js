@@ -1,0 +1,4 @@
+
+$(function(){
+	$('#myCarousel').carousel('cycle');
+});

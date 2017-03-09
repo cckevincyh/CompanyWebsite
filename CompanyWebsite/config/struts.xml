@@ -18,4 +18,9 @@
  	<include file="struts2/struts-productInfo-manage.xml"></include>
  	<include file="struts2/struts-companyInfo-manage.xml"></include>
  	<include file="struts2/struts-message-manage.xml"></include>
+ 	<include file="struts2/struts-productInfo.xml"></include>
+ 	<include file="struts2/struts-notice.xml"></include>
+ 	<include file="struts2/struts-article.xml"></include>
+ 	<include file="struts2/struts-info.xml"></include>
+ 	<include file="struts2/struts-message.xml"></include>
 </struts>	

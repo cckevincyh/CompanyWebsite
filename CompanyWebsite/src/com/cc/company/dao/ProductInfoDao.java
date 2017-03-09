@@ -1,5 +1,7 @@
 package com.cc.company.dao;
 
+import java.util.List;
+
 import com.cc.company.domain.PageBean;
 import com.cc.company.domain.ProductInfo;
 
@@ -18,5 +20,7 @@ public interface ProductInfoDao {
 
 	public PageBean<ProductInfo> queryProductInfo(ProductInfo productInfo,
 			int pageCode, int pageSize);
+
+	public List<ProductInfo> getProductImg(int size);
 
 }

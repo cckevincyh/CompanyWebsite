@@ -21,4 +21,9 @@
 	<import resource="applicationContext-productInfo-manage.xml"/>
 	<import resource="applicationContext-companyInfo-manage.xml"/>
 	<import resource="applicationContext-message-manage.xml"/>
+	<import resource="applicationContext-productInfo.xml"/>
+	<import resource="applicationContext-notice.xml"/>
+	<import resource="applicationContext-article.xml"/>
+	<import resource="applicationContext-info.xml"/>
+	<import resource="applicationContext-message.xml"/>
  </beans>

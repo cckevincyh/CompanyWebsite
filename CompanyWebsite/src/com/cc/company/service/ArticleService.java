@@ -18,4 +18,6 @@ public interface ArticleService {
 	public PageBean<Article> queryArticle(Article article, int pageCode,
 			int pageSize);
 
+	public Article getNewArticle();
+
 }

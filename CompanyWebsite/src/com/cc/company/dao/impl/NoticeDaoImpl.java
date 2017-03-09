@@ -166,4 +166,13 @@ public class NoticeDaoImpl extends HibernateDaoSupport implements NoticeDao {
 		return null;
 	}
 
+	@Override
+	public Notice getNewNotice() {
+		// 不支持limit分页
+		String hql = "from Notice order by nid desc";
+		// 分页查询
+		List noticeList = doSplitPage(hql, 1, 1);
+		return (Notice)noticeList.get(0);
+	}
+
 }

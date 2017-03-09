@@ -50,4 +50,10 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeDao.queryNotice(notice,pageCode,pageSize);
 	}
 
+	@Override
+	public Notice getNewNotice() {
+		// TODO Auto-generated method stub
+		return noticeDao.getNewNotice();
+	}
+
 }

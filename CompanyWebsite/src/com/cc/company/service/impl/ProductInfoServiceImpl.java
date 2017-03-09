@@ -1,5 +1,7 @@
 package com.cc.company.service.impl;
 
+import java.util.List;
+
 import com.cc.company.dao.ProductInfoDao;
 import com.cc.company.domain.PageBean;
 import com.cc.company.domain.ProductInfo;
@@ -49,6 +51,12 @@ public class ProductInfoServiceImpl implements ProductInfoService {
 			int pageCode, int pageSize) {
 		// TODO Auto-generated method stub
 		return productInfoDao.queryProductInfo(productInfo,pageCode,pageSize);
+	}
+
+	@Override
+	public List<ProductInfo> getProductImg(int size) {
+		// TODO Auto-generated method stub
+		return productInfoDao.getProductImg(size);
 	}
 
 }
