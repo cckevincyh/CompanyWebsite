@@ -332,7 +332,7 @@
 										 <div class="form-group">
 											<label for="firstname" class="col-sm-2 control-label">留言内容</label>
 												<div class="col-sm-9">
-													<textarea class="form-control" id="findContent" rows="20" readonly="readonly"></textarea>
+													<textarea class="form-control" id="findContent" rows="10" readonly="readonly"></textarea>
 												
 												</div>
 										</div>

@@ -15,7 +15,6 @@ $(function () {
 
 
 
-
 function getProductInfo(id){
 	ajax(
     		  {
@@ -26,7 +25,7 @@ function getProductInfo(id){
 	    		callback:function(data) {
 					$("#findName").val(data.pname);
 					$("#findDesc").val(data.pdesc);
-								
+				
 				}
 			}
 			   

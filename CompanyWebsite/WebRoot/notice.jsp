@@ -16,6 +16,10 @@
         <script src="${pageContext.request.contextPath}/jQuery/jquery-3.1.1.min.js"></script>
             <script src="${pageContext.request.contextPath}/js/bootstrap-dropdown.min.js"></script>
                <script src="${pageContext.request.contextPath}/ajax-lib/ajaxutils.js"></script>
+               
+                <script charset="utf-8" src="${pageContext.request.contextPath}/js/editor/kindeditor-min.js"></script>
+      		    <script charset="utf-8" src="${pageContext.request.contextPath}/js/editor/lang/zh_CN.js"></script>
+               
       <script src="${pageContext.request.contextPath}/js/noticeInfo.js"></script>
 </head>
 
@@ -189,7 +193,7 @@
 										 <div class="form-group">
 											<label for="firstname" class="col-sm-2 control-label">公告内容</label>
 												<div class="col-sm-9">
-													<textarea class="form-control" id="findContent" rows="10" readonly="readonly"></textarea>
+													<textarea class="form-control" id="findContent" rows="10" readonly="readonly" style="width:642px;height:500px;" ></textarea>
 												
 												</div>
 										</div>
