@@ -48,6 +48,10 @@ KindEditor.ready(function(K) {
 	addEditor = K.create('textarea[id="addContent"]', {
 		allowFileManager : true ,  //是否允许上传文件
 		resizeType:0, //1只能拖动高度，0不能拖动
+		allowImageUpload:true,//允许上传图片
+        allowFileManager:true, //允许对上传图片进行管理
+        uploadJson : '../js/editor/jsp/upload_json.jsp',  
+        fileManagerJson : '../js/editor/file_manager_json.jsp',  
 		afterCreate : function() {//获取 KindEditor里面的内容
          this.sync(); 
         }, 

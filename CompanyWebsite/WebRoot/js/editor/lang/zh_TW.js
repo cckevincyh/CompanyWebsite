@@ -101,6 +101,7 @@ KindEditor.lang({
 	invalidBorder : '边框必须为数字。',
 	pleaseInput : "請輸入內容。",
 	invalidJson : '伺服器發生故障。',
+	uploadSuccess : '上傳成功。',
 	cutError : '您的瀏覽器安全設置不允許使用剪下操作，請使用快捷鍵(Ctrl+X)完成。',
 	copyError : '您的瀏覽器安全設置不允許使用剪下操作，請使用快捷鍵(Ctrl+C)完成。',
 	pasteError : '您的瀏覽器安全設置不允許使用剪下操作，請使用快捷鍵(Ctrl+V)完成。',
@@ -109,6 +110,7 @@ KindEditor.lang({
 	uploadError : '上傳錯誤',
 	'plainpaste.comment' : '請使用快捷鍵(Ctrl+V)把內容貼到下方區域裡。',
 	'wordpaste.comment' : '請使用快捷鍵(Ctrl+V)把內容貼到下方區域裡。',
+	'code.pleaseInput' : 'Please input code.',
 	'link.url' : 'URL',
 	'link.linkType' : '打開類型',
 	'link.newWindow' : '新窗口',
@@ -193,6 +195,7 @@ KindEditor.lang({
 	'map.search' : '尋找',
 	'baidumap.address' : '住所: ',
 	'baidumap.search' : '尋找',
+	'baidumap.insertDynamicMap' : '插入動態地圖',
 	'anchor.name' : '錨點名稱',
 	'formatblock.formatBlock' : {
 		h1 : '標題 1',

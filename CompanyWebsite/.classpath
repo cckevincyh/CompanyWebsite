@@ -42,5 +42,8 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2/struts2-core-2.1.8.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2/struts2-spring-plugin-2.1.8.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2/xwork-core-2.1.6.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/kindEditor/commons-fileupload-1.2.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/kindEditor/commons-io-1.4.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/kindEditor/json_simple-1.1.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

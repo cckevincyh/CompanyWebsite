@@ -10,12 +10,15 @@
 KindEditor.plugin('image', function(K) {
 	var self = this, name = 'image',
 		allowImageUpload = K.undef(self.allowImageUpload, true),
+		allowImageRemote = K.undef(self.allowImageRemote, true),
 		formatUploadUrl = K.undef(self.formatUploadUrl, true),
 		allowFileManager = K.undef(self.allowFileManager, false),
-		uploadJson = K.undef(self.uploadJson, self.basePath + 'php/upload_json.php'),
+		uploadJson = K.undef(self.uploadJson, self.basePath + 'jsp/upload_json.jsp'),//修改上传方式
 		imageTabIndex = K.undef(self.imageTabIndex, 0),
 		imgPath = self.pluginsPath + 'image/images/',
 		extraParams = K.undef(self.extraFileUploadParams, {}),
+		filePostName = K.undef(self.filePostName, 'imgFile'),
+		fillDescAfterUploadImage = K.undef(self.fillDescAfterUploadImage, false),
 		lang = self.lang(name + '.');
 
 	self.plugin.imageDialog = function(options) {
@@ -24,6 +27,8 @@ KindEditor.plugin('image', function(K) {
 			imageHeight = K.undef(options.imageHeight, ''),
 			imageTitle = K.undef(options.imageTitle, ''),
 			imageAlign = K.undef(options.imageAlign, ''),
+			showRemote = K.undef(options.showRemote, true),
+			showLocal = K.undef(options.showLocal, true),
 			tabIndex = K.undef(options.tabIndex, 0),
 			clickFn = options.clickFn;
 		var target = 'kindeditor_upload_iframe_' + new Date().getTime();
@@ -82,8 +87,8 @@ KindEditor.plugin('image', function(K) {
 			//local upload - end
 			'</div>'
 		].join('');
-		var dialogWidth = allowImageUpload ? 450 : 400,
-			dialogHeight = allowImageUpload ? 300 : 250;
+		var dialogWidth = showLocal || allowFileManager ? 450 : 400,
+			dialogHeight = showLocal && showRemote ? 300 : 250;
 		var dialog = self.createDialog({
 			name : name,
 			width : dialogWidth,
@@ -98,7 +103,7 @@ KindEditor.plugin('image', function(K) {
 						return;
 					}
 					// insert local image
-					if (tabs && tabs.selectedIndex === 1) {
+					if (showLocal && showRemote && tabs && tabs.selectedIndex === 1 || !showRemote) {
 						if (uploadbutton.fileBox.val() == '') {
 							alert(self.lang('pleaseSelectFile'));
 							return;
@@ -157,7 +162,7 @@ KindEditor.plugin('image', function(K) {
 			alignBox = K('.tab1 [name="align"]', div);
 
 		var tabs;
-		if (allowImageUpload) {
+		if (showRemote && showLocal) {
 			tabs = K.tabs({
 				src : K('.tabs', div),
 				afterSelect : function(i) {}
@@ -171,14 +176,15 @@ KindEditor.plugin('image', function(K) {
 				panel : K('.tab2', div)
 			});
 			tabs.select(tabIndex);
-		} else {
+		} else if (showRemote) {
 			K('.tab1', div).show();
+		} else if (showLocal) {
+			K('.tab2', div).show();
 		}
 
 		var uploadbutton = K.uploadbutton({
 			button : K('.ke-upload-button', div)[0],
-			fieldName : 'imgFile',
-			url : K.addParam(uploadJson, 'dir=image'),
+			fieldName : filePostName,
 			form : K('.ke-form', div),
 			target : target,
 			width: 60,
@@ -189,9 +195,15 @@ KindEditor.plugin('image', function(K) {
 					if (formatUploadUrl) {
 						url = K.formatUrl(url, 'absolute');
 					}
-					clickFn.call(self, url, '', '', '', 0, '');
 					if (self.afterUpload) {
-						self.afterUpload.call(self, url);
+						self.afterUpload.call(self, url, data, name);
+					}
+					if (!fillDescAfterUploadImage) {
+						clickFn.call(self, url, data.title, data.width, data.height, data.border, data.align);
+					} else {
+						K(".ke-dialog-row #remoteUrl", div).val(url);
+						K(".ke-tabs-li", div)[0].click();
+						K(".ke-refresh-btn", div).click();
 					}
 				} else {
 					alert(data.message);
@@ -214,6 +226,9 @@ KindEditor.plugin('image', function(K) {
 						clickFn : function(url, title) {
 							if (self.dialogs.length > 1) {
 								K('[name="url"]', div).val(url);
+								if (self.afterSelectFile) {
+									self.afterSelectFile.call(self, url);
+								}
 								self.hideDialog();
 							}
 						}
@@ -262,7 +277,7 @@ KindEditor.plugin('image', function(K) {
 				return false;
 			}
 		});
-		if (tabIndex === 0) {
+		if (showRemote && tabIndex === 0) {
 			urlBox[0].focus();
 			urlBox[0].select();
 		}
@@ -277,9 +292,21 @@ KindEditor.plugin('image', function(K) {
 				imageHeight : img ? img.height() : '',
 				imageTitle : img ? img.attr('title') : '',
 				imageAlign : img ? img.attr('align') : '',
+				showRemote : false,//默认为：allowImageRemote,此处用来隐藏网络图片
+				showLocal : allowImageUpload,
 				tabIndex: img ? 0 : imageTabIndex,
 				clickFn : function(url, title, width, height, border, align) {
-					self.exec('insertimage', url, title, width, height, border, align);
+					if (img) {
+						img.attr('src', url);
+						img.attr('data-ke-src', url);
+						img.attr('width', width);
+						img.attr('height', height);
+						img.attr('title', title);
+						img.attr('align', align);
+						img.attr('alt', title);
+					} else {
+						self.exec('insertimage', url, title, width, height, border, align);
+					}
 					// Bugfix: [Firefox] 上传图片后，总是出现正在加载的样式，需要延迟执行hideDialog
 					setTimeout(function() {
 						self.hideDialog().focus();
@@ -293,6 +320,8 @@ KindEditor.plugin('image', function(K) {
 				target = target.parent();
 			}
 			target.remove();
+			// [IE] 删除图片后立即点击图片按钮出错
+			self.addBookmark();
 		}
 	};
 	self.clickToolbar(name, self.plugin.image.edit);

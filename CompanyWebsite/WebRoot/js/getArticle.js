@@ -20,18 +20,18 @@ KindEditor.ready(function(K) {
 	editor = K.create('textarea[id="findContent"]', {
 		allowFileManager : true ,  //是否允许上传文件
 		resizeType:0, //1只能拖动高度，0不能拖动
-		afterCreate : function() {//获取 KindEditor里面的内容
+		afterCreate : function() {//获取 KindEditor里面的内容，设置编辑器创建后执行的回调函数。
          this.sync(); 
+         
         }, 
-        afterBlur:function(){ //获取 KindEditor里面的内容
-            this.sync(); 
-        },
+        fullscreenShortcut:true,
+        readonlyMode : true,//初始化设置为只读模式
         items:[
                //设置无功能
-       ]
-        
+       ],
 	});
-	editor.readonly(true);//设置只读true
+//	editor.readonly(true);//设置只读true
+	
 });
 
 function getArticle(id){

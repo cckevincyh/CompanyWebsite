@@ -57,6 +57,7 @@ K.extend(KSWFUpload, {
 			file_types_description : options.fileTypesDesc,
 			file_upload_limit : options.fileUploadLimit,
 			file_size_limit : options.fileSizeLimit,
+			post_params : options.postParams,
 			file_queued_handler : function(file) {
 				file.url = self.options.fileIconUrl;
 				self.appendFile(file);
@@ -113,7 +114,7 @@ K.extend(KSWFUpload, {
 					return;
 				}
 				file.url = data.url;
-				K('.ke-img', itemDiv).attr('src', file.url).attr('data-status', file.filestatus);
+				K('.ke-img', itemDiv).attr('src', file.url).attr('data-status', file.filestatus).data('data', data);
 				K('.ke-status > div', itemDiv).hide();
 			}
 		};
@@ -127,10 +128,9 @@ K.extend(KSWFUpload, {
 		var list = [];
 		K('.ke-img', self.bodyDiv).each(function() {
 			var img = K(this);
-			var url = img.attr('src');
 			var status = img.attr('data-status');
 			if (status == SWFUpload.FILE_STATUS.COMPLETE) {
-				list.push(url);
+				list.push(img.data('data'));
 			}
 		});
 		return list;
@@ -203,6 +203,7 @@ KindEditor.plugin('multiimage', function(K) {
 		imageSizeLimit = K.undef(self.imageSizeLimit, '1MB'),
 		imageFileTypes = K.undef(self.imageFileTypes, '*.jpg;*.gif;*.png'),
 		imageUploadLimit = K.undef(self.imageUploadLimit, 20),
+		filePostName = K.undef(self.filePostName, 'imgFile'),
 		lang = self.lang(name + '.');
 
 	self.plugin.multiImageDialog = function(options) {
@@ -233,7 +234,10 @@ KindEditor.plugin('multiimage', function(K) {
 				}
 			},
 			beforeRemove : function() {
-				swfupload.remove();
+				// IE9 bugfix: https://github.com/kindsoft/kindeditor/issues/72
+				if (!K.IE || K.V <= 8) {
+					swfupload.remove();
+				}
 			}
 		}),
 		div = dialog.div;
@@ -248,11 +252,12 @@ KindEditor.plugin('multiimage', function(K) {
 			startButtonValue : lang.startUpload,
 			uploadUrl : K.addParam(uploadJson, 'dir=image'),
 			flashUrl : imgPath + 'swfupload.swf',
-			filePostName : 'imgFile',
+			filePostName : filePostName,
 			fileTypes : '*.jpg;*.jpeg;*.gif;*.png;*.bmp',
 			fileTypesDesc : 'Image Files',
 			fileUploadLimit : imageUploadLimit,
 			fileSizeLimit : imageSizeLimit,
+			postParams :  K.undef(self.extraFileUploadParams, {}),
 			queueLimitExceeded : lang.queueLimitExceeded,
 			fileExceedsSizeLimit : lang.fileExceedsSizeLimit,
 			zeroByteFile : lang.zeroByteFile,
@@ -273,11 +278,12 @@ KindEditor.plugin('multiimage', function(K) {
 				if (urlList.length === 0) {
 					return;
 				}
-				var html = '';
-				K.each(urlList, function(i, url) {
-					html += '<img src="' + K.escape(url) + '" data-ke-src="' + K.escape(url) + '" alt="" /><br />';
+				K.each(urlList, function(i, data) {
+					if (self.afterUpload) {
+						self.afterUpload.call(self, data.url, data, 'multiimage');
+					}
+					self.exec('insertimage', data.url, data.title, data.width, data.height, data.border, data.align);
 				});
-				self.insertHtml(html);
 				// Bugfix: [Firefox] 上传图片后，总是出现正在加载的样式，需要延迟执行hideDialog
 				setTimeout(function() {
 					self.hideDialog().focus();
@@ -305,20 +311,19 @@ KindEditor.plugin('multiimage', function(K) {
 /* ******************* */
 /* Constructor & Init  */
 /* ******************* */
-var SWFUpload;
 
-if (SWFUpload == undefined) {
-	SWFUpload = function (settings) {
-		this.initSWFUpload(settings);
-	};
-}
+(function() {
+
+window.SWFUpload = function (settings) {
+	this.initSWFUpload(settings);
+};
 
 SWFUpload.prototype.initSWFUpload = function (settings) {
 	try {
 		this.customSettings = {};	// A container where developers can place their own settings associated with this instance.
 		this.settings = settings;
 		this.eventQueue = [];
-		this.movieName = "SWFUpload_" + SWFUpload.movieCount++;
+		this.movieName = "KindEditor_SWFUpload_" + SWFUpload.movieCount++;
 		this.movieElement = null;
 
 
@@ -519,7 +524,13 @@ SWFUpload.prototype.loadFlash = function () {
 // Private: getFlashHTML generates the object tag needed to embed the flash in to the document
 SWFUpload.prototype.getFlashHTML = function () {
 	// Flash Satay object syntax: http://www.alistapart.com/articles/flashsatay
-	return ['<object id="', this.movieName, '" type="application/x-shockwave-flash" data="', this.settings.flash_url, '" width="', this.settings.button_width, '" height="', this.settings.button_height, '" class="swfupload">',
+	// Fix bug for IE9
+	// http://www.kindsoft.net/view.php?bbsid=7&postid=5825&pagenum=1
+	var classid = '';
+	if (KindEditor.IE && KindEditor.V > 8) {
+		classid = ' classid = "clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"';
+	}
+	return ['<object id="', this.movieName, '"' + classid + ' type="application/x-shockwave-flash" data="', this.settings.flash_url, '" width="', this.settings.button_width, '" height="', this.settings.button_height, '" class="swfupload">',
 				'<param name="wmode" value="', this.settings.button_window_mode, '" />',
 				'<param name="movie" value="', this.settings.flash_url, '" />',
 				'<param name="quality" value="high" />',
@@ -1269,6 +1280,9 @@ SWFUpload.Console.writeLine = function (message) {
 	}
 };
 
+})();
+
+(function() {
 /*
 	Queue Plug-in
 
@@ -1366,3 +1380,5 @@ if (typeof(SWFUpload) === "function") {
 		}
 	};
 }
+
+})();
