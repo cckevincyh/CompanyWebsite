@@ -6,7 +6,7 @@ $(function () {
     	   //encodeURIComponent() 函数可把字符串作为 URI 组件进行编码。
 //    	该方法不会对 ASCII 字母和数字进行编码，也不会对这些 ASCII 标点符号进行编码： - _ . ! ~ * ' ( ) 。
 //    	其他字符（比如 ：;/?:@&=+$,# 这些用于分隔 URI 组件的标点符号），都是由一个或多个十六进制的转义序列替换的。
-	var postdata = "title="+$.trim($("#addTitle").val())+"&content="+  encodeURIComponent($.trim($("#addContent").val()));
+	var postdata = "title="+$.trim($("#addTitle").val())+"&content="+  encodeURIComponent(addEditor.html());//获取KindEditor的html文本
 	ajax(
     		  {
 			  	method:'POST',
@@ -41,6 +41,21 @@ $(function () {
 
 
 
+//加入在线编辑器
+var addEditor;
+KindEditor.ready(function(K) {
+	//在当前网页中，查找<textarea name = "addContent"></textarea>，并替换成kindeditor编辑器。
+	addEditor = K.create('textarea[id="addContent"]', {
+		allowFileManager : true ,  //是否允许上传文件
+		resizeType:0, //1只能拖动高度，0不能拖动
+		afterCreate : function() {//获取 KindEditor里面的内容
+         this.sync(); 
+        }, 
+        afterBlur:function(){ //获取 KindEditor里面的内容
+            this.sync(); 
+        }       
+	});
+});
 
 
 
