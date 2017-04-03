@@ -6,6 +6,7 @@
   <package name="articleManage" extends="struts-default" namespace="/admin">
   	<action name="articleManageAction_*" method="{1}" class="articleManageAction">
   		<result name="success">articleManage.jsp</result>
+  		<result name="updateArticle">updateArticle.jsp</result>
   	</action>
   </package>
   

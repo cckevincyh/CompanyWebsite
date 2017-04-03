@@ -18,17 +18,17 @@
 		password
 	-->
 	<property name="connection.password">123</property>
-
-	<property name="hbm2ddl.auto">update</property>
-
+	<!--
+		<property name="hbm2ddl.auto">update</property>
+	-->
 	<property name="show_sql">true</property>
 	<mapping resource="com/cc/company/domain/Admin.hbm.xml" />
 	<mapping resource="com/cc/company/domain/Article.hbm.xml" />
 	<mapping resource="com/cc/company/domain/Message.hbm.xml" />
 	<mapping resource="com/cc/company/domain/Notice.hbm.xml" />
 	<mapping resource="com/cc/company/domain/ProductInfo.hbm.xml" />
-	<mapping resource="com/cc/company/domain/User.hbm.xml" />
 	<mapping resource="com/cc/company/domain/CompanyInfo.hbm.xml" />
+	<mapping resource="com/cc/company/domain/User.hbm.xml" />
 
 
 </session-factory>

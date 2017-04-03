@@ -16,7 +16,7 @@ $(function () {
 
 					}
 					if(data[2]!=undefined){
-						$("#img2").attr("src",basePath+data[2].img);
+						$("#img3").attr("src",basePath+data[2].img);
 						$("#p3").html("<h1>"+data[2].pname+"</h1>");
 					}
 					
@@ -26,6 +26,11 @@ $(function () {
     	);
 
 });
+
+function show(){
+	var basePath = $("#BasePath").val();
+	 window.location.href = basePath+"productInfoAction_findProductInfoByPage.action";
+}
 
 
 

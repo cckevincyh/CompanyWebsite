@@ -23,4 +23,5 @@
  	<include file="struts2/struts-article.xml"></include>
  	<include file="struts2/struts-info.xml"></include>
  	<include file="struts2/struts-message.xml"></include>
+ 	
 </struts>	

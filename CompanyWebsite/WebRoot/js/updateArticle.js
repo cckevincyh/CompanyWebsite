@@ -4,7 +4,11 @@ $(function () {
 	
 
     $('#updateArticle').click(function () {
-	var postdata = "id="+$.trim($("#updateId").val())+"&title="+$.trim($("#updateTitle").val())+"&content="+ $.trim($("#updateContent").val());
+   //encodeURIComponent() 函数可把字符串作为 URI 组件进行编码。
+//    	该方法不会对 ASCII 字母和数字进行编码，也不会对这些 ASCII 标点符号进行编码： - _ . ! ~ * ' ( ) 。
+//    	其他字符（比如 ：;/?:@&=+$,# 这些用于分隔 URI 组件的标点符号），都是由一个或多个十六进制的转义序列替换的。
+	var postdata = "id="+$.trim($("#updateId").val())+"&title="+$.trim($("#updateTitle").val())+"&content="+ encodeURIComponent($.trim($("#updateContent").val()));
+	alert(postdata);
 	ajax(
     		  {
 			  	method:'POST',
@@ -30,13 +34,30 @@ $(function () {
 	
 		$('#modal_info').on('hide.bs.modal',function() {//提示模糊框隐藏时候触发
        		 location.reload();  	//刷新当前页面
+       	   // 关闭Dialog前移除编辑器
+// 		    KindEditor.remove('#content');
     	});
-	
-	
+		
 
 });
 
 
+
+//加入在线编辑器
+var updateEditor;
+KindEditor.ready(function(K) {
+	//在当前网页中，查找<textarea name = "updateContent"></textarea>，并替换成kindeditor编辑器。
+	updateEditor = K.create('textarea[id="updateContent"]', {
+		allowFileManager : true ,  //是否允许上传文件
+		resizeType:0, //1只能拖动高度，0不能拖动
+		afterCreate : function() {//获取 KindEditor里面的内容
+         this.sync(); 
+        }, 
+        afterBlur:function(){ //获取 KindEditor里面的内容
+            this.sync(); 
+        }       
+	});
+});
 
 
 
@@ -50,8 +71,8 @@ function updateArticle(id){
 	    		callback:function(data) {
 					$("#updateId").val(data.aid);
 					$("#updateTitle").val(data.atitle);
-					$("#updateContent").val(data.acontent);
-								
+				//	$("#updateContent").val(data.acontent);//无法设置内容
+					updateEditor.html(data.acontent);		//	给在线编辑器设置内容
 				}
 			}
 			   

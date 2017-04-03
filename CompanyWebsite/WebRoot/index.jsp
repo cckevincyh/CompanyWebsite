@@ -71,15 +71,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<input type="hidden" value="<%=basePath%>" id="BasePath"/>
 								<div class="carousel-inner">
 									<div class="item active">
-										<img src="${pageContext.request.contextPath}/img/notfound.jpg" alt="First slide" class="img-responsive center-block" id="img1">
+										<img src="${pageContext.request.contextPath}/img/notfound.jpg" alt="First slide" class="img-responsive center-block" id="img1" onclick="javascript:show()">
 										 <div class="carousel-caption"><p id="p1"></p></div>
 									</div>
 									<div class="item">
-										<img src="${pageContext.request.contextPath}/img/notfound.jpg" alt="Second slide" class="img-responsive center-block" id="img2">
+										<img src="${pageContext.request.contextPath}/img/notfound.jpg" alt="Second slide" class="img-responsive center-block" id="img2" onclick="javascript:show()">
 										 <div class="carousel-caption"><p id="p2"></p></div>
 									</div>
 									<div class="item">
-										<img src="${pageContext.request.contextPath}/img/notfound.jpg" alt="Third slide" class="img-responsive center-block" id="img3">
+										<img src="${pageContext.request.contextPath}/img/notfound.jpg" alt="Third slide" class="img-responsive center-block" id="img3" onclick="javascript:show()">
 										 <div class="carousel-caption"><p id="p3"></p></h1></div>
 									</div>
 								</div>
@@ -102,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<h1 style="font-weight:bold;">企业公告</h1>
 								<p id="noticeTitle"></p>
 								<p id="noticeContent"></p>
-								<p><a class="btn btn-primary btn-lg" role="button">
+								<p><a class="btn btn-primary btn-lg" role="button" href="${pageContext.request.contextPath}/noticeAction_findNoticeByPage.action">
 									查看更多</a>
 								</p>
 							</div>
@@ -114,7 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<h1 style="font-weight:bold;">企业新闻</h1>
 									<p id="articleTitle"></p>
 									<p id="articleContent"></p>
-									<p><a class="btn btn-primary btn-lg" role="button">
+									<p><a class="btn btn-primary btn-lg" role="button" href="${pageContext.request.contextPath}/articleAction_findArticleByPage.action">
 										查看更多</a>
 									</p>
 							</div>

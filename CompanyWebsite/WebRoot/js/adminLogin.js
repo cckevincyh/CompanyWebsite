@@ -11,7 +11,7 @@ $(function () {
 	ajax(
     		  {
 			  	method:'POST',
-	    		url:'admin/adminAction_login.action',
+	    		url:'adminAction_login.action',
 				params: postdata,
 	    		callback:function(data) {
 					

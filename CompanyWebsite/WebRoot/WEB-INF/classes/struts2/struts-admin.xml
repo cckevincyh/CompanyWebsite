@@ -3,7 +3,7 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
 	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
 <struts>
-  <package name="admin" extends="struts-default" namespace="/admin">
+  <package name="admin" extends="struts-default" namespace="/">
   	<action name="adminAction_*" method="{1}" class="adminAction">
   		<result name="logout" type="redirect">/adminLogin.jsp</result>
   	</action>

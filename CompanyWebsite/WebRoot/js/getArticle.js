@@ -26,7 +26,6 @@ function getArticle(id){
 	    		callback:function(data) {
 					$("#findTitle").val(data.atitle);
 					$("#findContent").val(data.acontent);
-								
 				}
 			}
 			   

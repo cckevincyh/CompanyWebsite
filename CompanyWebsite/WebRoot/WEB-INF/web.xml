@@ -26,6 +26,24 @@
 	</filter-mapping>
   
   
+  
+  
+    <!-- 管理员权限的过滤 -->
+    <filter>
+    <display-name>AdminFilter</display-name>
+    <filter-name>AdminFilter</filter-name>
+    <filter-class>com.cc.company.web.filter.AdminFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+    <filter-name>AdminFilter</filter-name>
+    <url-pattern>/admin/*</url-pattern>
+  </filter-mapping>
+  
+  
+  
+  
+  
  <!-- 配置struts2的过滤器 -->
   <filter>
 		<filter-name>struts2</filter-name>

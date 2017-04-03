@@ -42,7 +42,7 @@
                                        <li><a href="#updatepwd" data-toggle="modal">修改密码</a></li>
                                         <li role="presentation" class="divider"></li>
                                      <!-- href="#identifier"  来指定要切换的特定的模态框（带有 id="identifier"）。-->  
-                                    <li><a href="${pageContext.request.contextPath}/admin/adminAction_logout.action">退出</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/adminAction_logout.action">退出</a></li>
                                 </ul>
                                 
                             </li>
@@ -59,7 +59,7 @@
             <!-- left, vertical navbar -->
             <div class="col-md-2 bootstrap-admin-col-left">
                 <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
-                    <li>
+                  <li>
                         <a href="${pageContext.request.contextPath}/admin/userManageAction_findUserByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 会员管理</a>
                     </li>
                     <li>
@@ -73,10 +73,10 @@
                     </li>
                     
                     <li>
-                        <a href="/library/admin/borrowInfo"><i class="glyphicon glyphicon-chevron-right"></i> 企业信息管理</a>
+                        <a href="${pageContext.request.contextPath}/admin/companyInfoAction_getCompanyInfo.action"><i class="glyphicon glyphicon-chevron-right"></i> 企业信息管理</a>
                     </li>
                      <li>
-                        <a href="/library/admin/return"><i class="glyphicon glyphicon-chevron-right"></i> 留言管理</a>
+                        <a href="${pageContext.request.contextPath}/admin/messageManageAction_findMessageByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 留言管理</a>
                     </li>
              
   
@@ -103,19 +103,6 @@
                     <div class="col-md-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <div class="text-muted bootstrap-admin-box-title">企业会员管理</div>
-                            </div>
-                            <div class="bootstrap-admin-panel-content">
-                                <ul>
-                                    <li>根据会员名称查询会企业员基本信息</li>
-                                    <li>添加、修改、删除企业会员</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
                                 <div class="text-muted bootstrap-admin-box-title">企业公告管理</div>
                             </div>
                             <div class="bootstrap-admin-panel-content">
@@ -126,8 +113,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
                     <div class="col-md-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -141,6 +126,8 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-md-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -154,8 +141,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
                     <div class="col-md-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -168,6 +153,8 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-md-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -180,6 +167,7 @@
                             </div>
                         </div>
                     </div>
+                   
                 </div>
                 
             </div>

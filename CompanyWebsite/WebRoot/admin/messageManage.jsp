@@ -48,7 +48,7 @@
                                  <ul class="dropdown-menu">
                                     <li><a href="#updatepwd" data-toggle="modal">修改密码</a></li>
                                      <li role="presentation" class="divider"></li>
-                                    <li><a href="${pageContext.request.contextPath}/admin/adminAction_logout.action">退出</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/adminAction_logout.action">退出</a></li>
                                 </ul>
                                 
                             </li>
@@ -65,7 +65,7 @@
             <!-- left, vertical navbar -->
             <div class="col-md-2 bootstrap-admin-col-left">
                 <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
-                    <li>
+                   <li>
                         <a href="${pageContext.request.contextPath}/admin/userManageAction_findUserByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 会员管理</a>
                     </li>
                     <li>

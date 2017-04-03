@@ -64,8 +64,7 @@ public class AdminAction extends ActionSupport {
 			login = -2;
 		} else {
 			// 存储入session
-			ServletActionContext.getContext().getSession()
-					.put("admin", newAdmin);
+			ServletActionContext.getContext().getSession().put("admin", newAdmin);
 		}
 		HttpServletResponse response = ServletActionContext.getResponse();
 		try {

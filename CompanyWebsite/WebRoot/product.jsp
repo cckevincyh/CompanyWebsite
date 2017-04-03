@@ -41,10 +41,7 @@
       		<li><a href="${pageContext.request.contextPath}/contact.jsp">联系我们</a></li>
         </ul>
            
-        <ul class="nav navbar-nav navbar-right"> 
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> 注册</a></li> 
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li> 
-        </ul> 
+       
         
     </div> 
 </nav>
@@ -56,7 +53,7 @@
 			
 			<div class="page-header">
   			  <h1>企业产品
-      		 <div class="pull-right">
+      		<div class="pull-right">
 				<form class="navbar-form navbar-left" role="search">
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="搜索企业产品名称">

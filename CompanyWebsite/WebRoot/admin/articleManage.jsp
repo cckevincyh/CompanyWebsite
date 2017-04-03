@@ -19,18 +19,22 @@
             <script src="${pageContext.request.contextPath}/js/bootstrap-dropdown.min.js"></script>
             
             <script src="${pageContext.request.contextPath}/ajax-lib/ajaxutils.js"></script>
+            <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+            
+             <script charset="utf-8" src="${pageContext.request.contextPath}/js/editor/kindeditor-min.js"></script>
+      		    <script charset="utf-8" src="${pageContext.request.contextPath}/js/editor/lang/zh_CN.js"></script>
            
              <script src="${pageContext.request.contextPath}/js/adminUpdatePwd.js"></script>
               <script src="${pageContext.request.contextPath}/js/updateArticle.js"></script>
               <script src="${pageContext.request.contextPath}/js/addArticle.js"></script>
                 <script src="${pageContext.request.contextPath}/js/deleteArticle.js"></script>
       		  <script src="${pageContext.request.contextPath}/js/getArticle.js"></script>
+      		  
+      		    
+      	
 </head>
 
-
-
-<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 
 
 <body class="bootstrap-admin-with-small-navbar">
@@ -47,7 +51,7 @@
                                  <ul class="dropdown-menu">
                                     <li><a href="#updatepwd" data-toggle="modal">修改密码</a></li>
                                      <li role="presentation" class="divider"></li>
-                                    <li><a href="${pageContext.request.contextPath}/admin/adminAction_logout.action">退出</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/adminAction_logout.action">退出</a></li>
                                 </ul>
                                 
                             </li>
@@ -64,7 +68,7 @@
             <!-- left, vertical navbar -->
             <div class="col-md-2 bootstrap-admin-col-left">
                 <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
-                    <li>
+         		  <li>
                         <a href="${pageContext.request.contextPath}/admin/userManageAction_findUserByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 会员管理</a>
                     </li>
                     <li>
@@ -81,7 +85,7 @@
                         <a href="${pageContext.request.contextPath}/admin/companyInfoAction_getCompanyInfo.action"><i class="glyphicon glyphicon-chevron-right"></i> 企业信息管理</a>
                     </li>
                      <li>
-                        <a href="/library/admin/return"><i class="glyphicon glyphicon-chevron-right"></i> 留言管理</a>
+                        <a href="${pageContext.request.contextPath}/admin/messageManageAction_findMessageByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 留言管理</a>
                     </li>
                    
                 </ul>
@@ -104,10 +108,9 @@
                                             <label class="control-label" for="query_ano" style="display: none;"></label>
                                         </div>
                                     </div>
-               
                                     <div class="col-lg-2 form-group">
                                         <button type="submit" class="btn btn-primary" id="btn_query" onclick="query()">查询</button>
-                                        <button type="button" class="btn btn-primary" id="btn_add" data-toggle="modal" data-target="#addModal">添加</button>          
+                                        <button type="button" class="btn btn-primary" id="btn_add"   data-toggle="modal" data-target="#addModal">添加</button>          
                                     </div>
                                 </form>
                             </div>
@@ -219,12 +222,6 @@
     
     
     
-    
-    
-    
-    
-    
-    
      <!--------------------------------------添加的模糊框------------------------>  
                                  <form class="form-horizontal">   <!--保证样式水平不混乱-->   
                                         <!-- 模态框（Modal） -->
@@ -253,7 +250,7 @@
 										<div class="form-group">	
 											<label for="firstname" class="col-sm-2 control-label">新闻内容</label>
 											<div class="col-sm-9">
-											<textarea class="form-control" id="addContent" rows="20"  placeholder="请输入新闻内容"></textarea>
+											<textarea class="form-control" id="addContent"   placeholder="请输入新闻内容" style="width:642px;height:500px;"></textarea>
 											</div>
 										</div>
 											
@@ -273,12 +270,8 @@
 
                                  </form>	
  								<!--------------------------------------添加的模糊框------------------------>  
- 
- 
- 
- 
-     
-                                     <!-- 修改模态框（Modal） -->
+
+  			 <!-- 修改模态框（Modal） -->
                                      <!-------------------------------------------------------------->  
                                 
                                         <!-- 修改模态框（Modal） -->
@@ -311,7 +304,7 @@
 										<div class="form-group">	
 											<label for="firstname" class="col-sm-2 control-label">新闻内容</label>
 											<div class="col-sm-9">
-													<textarea class="form-control" id="updateContent" rows="20"  ></textarea>
+													<textarea class="form-control" id="updateContent"  style="width:642px;height:500px;"></textarea>
 											</div>
 										</div>
 										
@@ -331,13 +324,6 @@
 	
                                  </form>
                                    <!-------------------------------------------------------------->
- 
-    
-    
-    
-    
- 
- 
  
  
     
