@@ -41,7 +41,6 @@
       		<li><a href="${pageContext.request.contextPath}/contact.jsp">联系我们</a></li>
         </ul>
            
-       
         
     </div> 
 </nav>

@@ -48,8 +48,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<li><a href="${pageContext.request.contextPath}/productInfoAction_findProductInfoByPage.action">企业产品</a></li>
       		<li><a href="${pageContext.request.contextPath}/contact.jsp">联系我们</a></li>
         </ul>
-           
-     
+        
+        
+        
     </div> 
 </nav>
            

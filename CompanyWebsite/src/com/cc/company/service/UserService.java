@@ -19,4 +19,6 @@ public interface UserService {
 
 	public PageBean<User> queryUser(User user, int pageCode, int pageSize);
 
+	public int regist(User user);
+
 }

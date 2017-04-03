@@ -12,6 +12,7 @@
   
  	<include file="struts2/struts-admin.xml"></include>
  	<include file="struts2/struts-user-manage.xml"></include>
+ 	<include file="struts2/struts-user.xml"></include>
  	<include file="struts2/struts-notice-manage.xml"></include>
  	<include file="struts2/struts-article-manage.xml"></include>
  	<include file="struts2/struts-fileUpload.xml"></include>

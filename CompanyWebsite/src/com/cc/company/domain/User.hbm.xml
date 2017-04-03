@@ -19,7 +19,9 @@
 		</property>
 		
 		
-		
+		<property name="state" type="java.lang.Integer">
+			<column name="state" default="0"/>
+		</property>
 		
 
 		

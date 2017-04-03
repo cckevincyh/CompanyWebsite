@@ -5,6 +5,17 @@ public class User {
 	private String username;
 	private String pwd;
 
+	private Integer state;
+	
+	
+	public Integer getState() {
+		return state;
+	}
+
+	public void setState(Integer state) {
+		this.state = state;
+	}
+
 	public String getUsername() {
 		return username;
 	}

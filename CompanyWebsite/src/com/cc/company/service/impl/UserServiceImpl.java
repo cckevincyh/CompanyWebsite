@@ -55,4 +55,14 @@ public class UserServiceImpl implements UserService {
 		return userDao.queryUser(user, pageCode, pageSize);
 	}
 
+	@Override
+	public int regist(User user) {
+		// 注册用户
+		if(userDao.addUser(user)){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+
 }

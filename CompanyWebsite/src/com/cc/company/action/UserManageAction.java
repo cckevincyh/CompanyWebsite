@@ -52,6 +52,7 @@ public class UserManageAction extends ActionSupport {
 			success = -1;
 		} else {
 			user.setPwd(pwd);
+			user.setState(1);//设置会员状态为审核通过的
 			boolean b = userService.addUser(user);
 			if (!b) {
 				success = 0;
