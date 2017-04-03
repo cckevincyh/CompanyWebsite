@@ -443,7 +443,7 @@
 										 <div class="form-group">
 											<label for="firstname" class="col-sm-2 control-label">新闻内容</label>
 												<div class="col-sm-9">
-													<textarea class="form-control" id="findContent" rows="20" readonly="readonly"></textarea>
+													<textarea class="form-control" id="findContent" rows="20" style="width:642px;height:500px;" readonly="readonly"></textarea>
 												
 												</div>
 										</div>
