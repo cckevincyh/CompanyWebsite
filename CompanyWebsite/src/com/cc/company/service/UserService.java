@@ -21,4 +21,6 @@ public interface UserService {
 
 	public int regist(User user);
 
+	public User updateUserPwd(User user);
+
 }

@@ -5,13 +5,13 @@
 $(function () {
 	
 	
-    $('#update_adminPwd').click(function () {
+    $('#update_userPwd').click(function () {
 
 	var postdata = "oldPwd="+$.trim($("#oldPwd").val())+"&newPwd="+ $.trim($("#newPwd").val())+"&confirmPwd="+ $.trim($("#confirmPwd").val());
 	ajax(
     		  {
 			  	method:'POST',
-	    		url:'admin/adminAction_adminPwd.action',
+	    		url:'user/userAction_userPwd.action',
 				params: postdata,
 	    		callback:function(data) {
 					if (data == 1) {

@@ -19,4 +19,6 @@ public interface UserDao {
 
 	public PageBean<User> queryUser(User user, int pageCode, int pageSize);
 
+	public User updateUserPwd(User user);
+
 }

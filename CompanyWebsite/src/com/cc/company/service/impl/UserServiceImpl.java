@@ -65,4 +65,10 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	@Override
+	public User updateUserPwd(User user) {
+		// TODO Auto-generated method stub
+		return userDao.updateUserPwd(user);
+	}
+
 }

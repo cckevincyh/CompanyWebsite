@@ -173,4 +173,19 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		return null;
 	}
 
+	@Override
+	public User updateUserPwd(User user) {
+		User newUser = null;
+		try {
+			this.getHibernateTemplate().clear();
+			// 将传入的detached(分离的)状态的对象的属性复制到持久化对象中，并返回该持久化对象
+			newUser = (User) this.getHibernateTemplate().merge(user);
+			this.getHibernateTemplate().flush();
+		} catch (Throwable e1) {
+			e1.printStackTrace();
+			throw new RuntimeException(e1.getMessage());
+		}
+		return newUser;
+	}
+
 }

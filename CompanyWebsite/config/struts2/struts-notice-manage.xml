@@ -9,6 +9,10 @@
   	</action>
   </package>
   
-
+ <package name="_notice" extends="struts-default" namespace="/">
+  	<action name="noticeManageAction_*" method="{1}" class="noticeManageAction">
+  		<result name="success">notice.jsp</result>
+  	</action>
+  </package>
   
 </struts>	

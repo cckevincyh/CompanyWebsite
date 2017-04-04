@@ -9,6 +9,11 @@
   	</action>
   </package>
   
-
+<package name="userCompanyInfo" extends="struts-default" namespace="/user">
+  	<action name="companyInfoAction_*" method="{1}" class="companyInfoAction">
+  	<result name="success">companyInfoManage.jsp</result>
+  	</action>
+  </package>
+  
   
 </struts>	

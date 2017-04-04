@@ -59,9 +59,9 @@
   			  <h1>企业公告栏
   			  
   			  <div class="pull-right">
-				<form class="navbar-form navbar-left" role="search">
+				<form class="navbar-form navbar-left" role="search" action="${pageContext.request.contextPath}/noticeManageAction_queryNotice.action" method="post">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="搜索企业公告的相关信息">
+						<input type="text" class="form-control" placeholder="搜索企业公告的相关信息" name="noticeInfo">
 					</div>
 					<button type="submit" class="btn btn-default">搜索</button>
 				</form>

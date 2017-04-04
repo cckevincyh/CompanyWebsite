@@ -10,6 +10,12 @@
   	</action>
   </package>
   
-
+  
+<package name="_article" extends="struts-default" namespace="/">
+  	<action name="articleManageAction_*" method="{1}" class="articleManageAction">
+  		<result name="success">article.jsp</result>
+  	
+  	</action>
+  </package>
   
 </struts>	

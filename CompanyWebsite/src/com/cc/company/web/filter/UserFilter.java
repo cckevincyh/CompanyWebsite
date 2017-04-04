@@ -12,10 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.cc.company.domain.Admin;
+import com.cc.company.domain.User;
 
 
-public class AdminFilter implements Filter{
+
+public class UserFilter implements Filter{
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
@@ -30,8 +31,8 @@ public class AdminFilter implements Filter{
 		HttpServletResponse resp = (HttpServletResponse)response;
 		HttpSession session = req.getSession();
 		//从session中获取用户对象
-		Object obj =  session.getAttribute("admin");
-		if(obj!=null && obj instanceof Admin){
+		Object obj =  session.getAttribute("user");
+		if(obj!=null && obj instanceof User){
 			//用户为管理员,放行
 			chain.doFilter(request, response);
 			

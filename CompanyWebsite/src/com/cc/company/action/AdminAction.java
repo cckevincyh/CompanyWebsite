@@ -89,8 +89,7 @@ public class AdminAction extends ActionSupport {
 	 * @return
 	 */
 	public String adminPwd() {
-		Admin admin = (Admin) ServletActionContext.getContext().getSession()
-				.get("admin");
+		Admin admin = (Admin) ServletActionContext.getContext().getSession().get("admin");
 		int state = -1;// 原密码错误
 		// 取出原密码进行比对
 		if (admin.getPwd().equals(oldPwd)) {
@@ -99,8 +98,7 @@ public class AdminAction extends ActionSupport {
 				admin.setPwd(newPwd);
 				admin = adminService.updateAdminPwd(admin);
 				// 重新存入session
-				ServletActionContext.getContext().getSession()
-						.put("admin", admin);
+				ServletActionContext.getContext().getSession().put("admin", admin);
 			} else {
 				state = 0;// 确认密码不一致
 			}

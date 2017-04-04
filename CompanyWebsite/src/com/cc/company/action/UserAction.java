@@ -22,8 +22,28 @@ public class UserAction extends ActionSupport {
 
 	private String vcode;
 	
+	private String oldPwd;
+	private String newPwd;
+	private String confirmPwd;
 	
-	
+	public void setOldPwd(String oldPwd) {
+		this.oldPwd = oldPwd;
+	}
+
+
+
+	public void setNewPwd(String newPwd) {
+		this.newPwd = newPwd;
+	}
+
+
+
+	public void setConfirmPwd(String confirmPwd) {
+		this.confirmPwd = confirmPwd;
+	}
+
+
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -133,6 +153,47 @@ public class UserAction extends ActionSupport {
 			e.printStackTrace();
 		}
 		
+		return null;
+	}
+	
+	
+	
+	
+	/**
+	 * 退出登录
+	 */
+	public String logout() {
+		ServletActionContext.getContext().getSession().remove("user");
+		return "logout";
+	}
+	
+	
+	/**
+	 * 管理员密码修改
+	 * 
+	 * @return
+	 */
+	public String userPwd() {
+		User user = (User) ServletActionContext.getContext().getSession().get("user");
+		int state = -1;// 原密码错误
+		// 取出原密码进行比对
+		if (user.getPwd().equals(oldPwd)) {
+			if (newPwd.equals(confirmPwd)) {
+				state = 1;// 修改成功
+				user.setPwd(newPwd);
+				user = userService.updateUserPwd(user);
+				// 重新存入session
+				ServletActionContext.getContext().getSession().put("user", user);
+			} else {
+				state = 0;// 确认密码不一致
+			}
+		}
+		try {
+			ServletActionContext.getResponse().getWriter().print(state);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException(e.getMessage());
+		}
 		return null;
 	}
 }

@@ -5,7 +5,7 @@
 <html lang="zh-CN" class="ax-vertical-centered">
 <head>
 	<meta charset="UTF-8">
-	<title>企业网站后台</title>
+	<title>企业网站会员后台</title>
 	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
@@ -17,7 +17,7 @@
             <script src="${pageContext.request.contextPath}/js/bootstrap-dropdown.min.js"></script>
                       
               <script src="${pageContext.request.contextPath}/ajax-lib/ajaxutils.js"></script>
- <script src="${pageContext.request.contextPath}/js/adminUpdatePwd.js"></script>
+ <script src="${pageContext.request.contextPath}/js/userUpdatePwd.js"></script>
        
 </head>
 
@@ -33,16 +33,16 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="collapse navbar-collapse main-navbar-collapse">
-                        <a class="navbar-brand" href="${pageContext.request.contextPath}/admin/admin.jsp"><strong>欢迎进入企业网站后台</strong></a>
+                        <a class="navbar-brand" href="${pageContext.request.contextPath}/user/user.jsp"><strong>欢迎进入企业网站会员后台</strong></a>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
-                                <a href="#" role="button" class="dropdown-toggle" data-hover="dropdown"> <i class="glyphicon glyphicon-user"></i> 欢迎您， <s:property value="#session.admin.adminName"/> <i class="caret"></i></a>
+                                <a href="#" role="button" class="dropdown-toggle" data-hover="dropdown"> <i class="glyphicon glyphicon-user"></i> 欢迎您， <s:property value="#session.user.username"/> <i class="caret"></i></a>
                             
                                  <ul class="dropdown-menu">
                                        <li><a href="#updatepwd" data-toggle="modal">修改密码</a></li>
                                         <li role="presentation" class="divider"></li>
                                      <!-- href="#identifier"  来指定要切换的特定的模态框（带有 id="identifier"）。-->  
-                                    <li><a href="${pageContext.request.contextPath}/adminAction_logout.action">退出</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/userAction_logout.action">退出</a></li>
                                 </ul>
                                 
                             </li>
@@ -59,29 +59,13 @@
             <!-- left, vertical navbar -->
             <div class="col-md-2 bootstrap-admin-col-left">
                 <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
-                  <li>
-                        <a href="${pageContext.request.contextPath}/admin/userManageAction_findUserByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 会员管理</a>
-                    </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/admin/noticeManageAction_findNoticeByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 企业公告管理</a>
-                    </li>
-                    <li>
-                        <a href="${pageContext.request.contextPath}/admin/articleManageAction_findArticleByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 企业新闻管理</a>
-                    </li>
-                    <li>
-                        <a href="${pageContext.request.contextPath}/admin/productInfoManageAction_findProductInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i>  企业产品管理</a>
+                        <a href="${pageContext.request.contextPath}/user/productInfoManageAction_findProductInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i>  企业产品管理</a>
                     </li>
                     
                     <li>
-                        <a href="${pageContext.request.contextPath}/admin/companyInfoAction_getCompanyInfo.action"><i class="glyphicon glyphicon-chevron-right"></i> 企业信息管理</a>
+                        <a href="${pageContext.request.contextPath}/user/companyInfoAction_getCompanyInfo.action"><i class="glyphicon glyphicon-chevron-right"></i> 企业信息管理</a>
                     </li>
-                     <li>
-                        <a href="${pageContext.request.contextPath}/admin/messageManageAction_findMessageByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 留言管理</a>
-                    </li>
-             
-  
-                   
-                   
                 </ul>
                 
                 
@@ -103,39 +87,11 @@
                     <div class="col-md-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <div class="text-muted bootstrap-admin-box-title">企业公告管理</div>
-                            </div>
-                            <div class="bootstrap-admin-panel-content">
-                                <ul>
-                                    <li>查询公告信息</li>
-                                    <li>添加、修改、删除企业公告</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <div class="text-muted bootstrap-admin-box-title">企业新闻管理</div>
-                            </div>
-                            <div class="bootstrap-admin-panel-content">
-                                <ul>
-                                    <li>查询公告信息</li>
-                                    <li>添加、修改、删除企业新闻</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
                                 <div class="text-muted bootstrap-admin-box-title">企业产品管理</div>
                             </div>
                             <div class="bootstrap-admin-panel-content">
                                 <ul>
-                                    <li>查询企业产品</li>
+                                  <li>查询企业产品</li>
                                     <li>添加、修改、删除企业产品</li>
                                 </ul>
                             </div>
@@ -149,25 +105,11 @@
                             <div class="bootstrap-admin-panel-content">
                                 <ul>
                                     <li>修改企业信息</li>
+                                    <br>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <div class="text-muted bootstrap-admin-box-title">留言管理</div>
-                            </div>
-                            <div class="bootstrap-admin-panel-content">
-                                <ul>
-                                    <li>查看留言</li>                        
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                   
                 </div>
                 
             </div>
@@ -232,7 +174,7 @@
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">关闭
 								</button>
-								<button type="button" class="btn btn-primary" id="update_adminPwd">
+								<button type="button" class="btn btn-primary" id="update_userPwd">
 									修改
 								</button>
 							</div>

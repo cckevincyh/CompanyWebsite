@@ -9,6 +9,9 @@
   	</action>
   </package>
   
-
+  <package name="adminPwd" extends="struts-default" namespace="/admin">
+  	<action name="adminAction_*" method="{1}" class="adminAction">
+  	</action>
+  </package>
   
 </struts>	

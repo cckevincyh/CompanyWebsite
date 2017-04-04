@@ -10,5 +10,16 @@
   </package>
   
 
+	<package name="userProductInfo" extends="struts-default" namespace="/user">
+  	<action name="productInfoManageAction_*" method="{1}" class="productInfoManageAction">
+  		<result name="success">productInfoManage.jsp</result>
+  	</action>
+  </package>
+  
+  <package name="product_Info" extends="struts-default" namespace="/">
+  	<action name="productInfoManageAction_*" method="{1}" class="productInfoManageAction">
+  		<result name="success">product.jsp</result>
+  	</action>
+  </package>
   
 </struts>	

@@ -40,7 +40,17 @@
     <url-pattern>/admin/*</url-pattern>
   </filter-mapping>
   
+  <!-- 会员权限的过滤 -->
+    <filter>
+    <display-name>UserFilter</display-name>
+    <filter-name>UserFilter</filter-name>
+    <filter-class>com.cc.company.web.filter.UserFilter</filter-class>
+  </filter>
   
+  <filter-mapping>
+    <filter-name>UserFilter</filter-name>
+    <url-pattern>/user/*</url-pattern>
+  </filter-mapping>
   
   
   

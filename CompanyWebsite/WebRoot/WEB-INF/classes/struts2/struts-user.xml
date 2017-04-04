@@ -5,10 +5,14 @@
 <struts>
   <package name="user" extends="struts-default" namespace="/">
   	<action name="userAction_*" method="{1}" class="userAction">
-  		<result name="success">index.jsp</result>
+  		<result name="logout" type="redirect">/userLogin.jsp</result>
   	</action>
   </package>
   
+  <package name="userPwd" extends="struts-default" namespace="/user">
+  	<action name="userAction_*" method="{1}" class="userAction">
+  	</action>
+  </package>
 
   
 </struts>	

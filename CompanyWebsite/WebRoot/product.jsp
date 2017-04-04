@@ -53,9 +53,9 @@
 			<div class="page-header">
   			  <h1>企业产品
       		<div class="pull-right">
-				<form class="navbar-form navbar-left" role="search">
+				<form class="navbar-form navbar-left" role="search" action="${pageContext.request.contextPath}/productInfoManageAction_queryProductInfo.action" method="post">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="搜索企业产品名称">
+						<input type="text" class="form-control" placeholder="搜索企业产品名称" name="pname">
 					</div>
 					<button type="submit" class="btn btn-default">搜索</button>
 				</form>

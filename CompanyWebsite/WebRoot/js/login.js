@@ -15,7 +15,7 @@ $(function () {
 				params: postdata,
 	    		callback:function(data) {
 					if (data == 1) {
-	                    window.location.href = "admin/admin.jsp";
+	                    window.location.href = "user/user.jsp";
 	                } else if (data == -1) {
 	                    showInfo("账号不存在");
 	                } else if (data == -2) {

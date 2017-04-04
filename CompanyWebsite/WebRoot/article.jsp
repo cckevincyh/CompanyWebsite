@@ -58,9 +58,9 @@
 			<div class="page-header">
   			  <h1>企业新闻
       		 <div class="pull-right">
-      		 <form class="navbar-form navbar-left" role="search">
+      		 <form class="navbar-form navbar-left" role="search" action="${pageContext.request.contextPath}/articleManageAction_queryArticle.action" method="post">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="搜索企业新闻的相关信息">
+						<input type="text" class="form-control" placeholder="搜索企业新闻的相关信息" name="articleInfo">
 					</div>
 					<button type="submit" class="btn btn-default">搜索</button>
 				</form>

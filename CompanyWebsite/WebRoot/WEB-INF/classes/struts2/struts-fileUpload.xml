@@ -9,6 +9,10 @@
   	</action>
   </package>
   
+	<package name="userFileUpload" extends="struts-default" namespace="/user">
+  	<action name="fileUploadAction_*" method="{1}" class="fileUploadAction">
 
+  	</action>
+  </package>
   
 </struts>	
