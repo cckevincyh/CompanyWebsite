@@ -4,6 +4,11 @@ $(function () {
 
     $('#addUser').click(function () {
 
+    	
+    	if(!validAddUser()){
+    		return ;
+    	}
+    	
 	var postdata = "username="+$.trim($("#addUsername").val())+"&pwd="+ $.trim($("#addPwd").val());
 	ajax(
     		  {
@@ -41,6 +46,46 @@ $(function () {
 
 
 
+
+
+
+function validAddUser() {
+    var flag = true;
+
+
+
+    
+	  var name = $.trim($("#addUsername").val());
+	    if (name == "") {
+	        $('#addUsername').parent().addClass("has-error");
+	        $('#addUsername').next().text("请输入会员用户名");
+	        $("#addUsername").next().show();
+	        flag = false;
+	    }else {
+	        $('#addUsername').parent().removeClass("has-error");
+	        $('#addUsername').next().text("");
+	        $("#addUsername").next().hide();
+	    }
+	
+    var pwd = $.trim($("#addPwd").val());
+    if (pwd == "") {
+        $('#addPwd').parent().addClass("has-error");
+        $('#addPwd').next().text("请输入密码");
+        $("#addPwd").next().show();
+        flag = false;
+    } else if (pwd.length<3 || pwd.length > 15) {
+        $("#addPwd").parent().addClass("has-error");
+        $("#addPwd").next().text("密码长度必须在3~15之间");
+        $("#addPwd").next().show();
+        flag = false;
+    } else {
+        $('#addPwd').parent().removeClass("has-error");
+        $('#addPwd').next().text("");
+        $("#addPwd").next().hide();
+    }
+    
+    return flag;
+}
 
 
 

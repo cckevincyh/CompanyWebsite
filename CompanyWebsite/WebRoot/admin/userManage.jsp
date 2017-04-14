@@ -244,7 +244,7 @@
 											<label for="firstname" class="col-sm-3 control-label">会员用户名</label>
 												<div class="col-sm-7">
 													<input type="text" class="form-control" id="addUsername"  placeholder="请输入管理员用户名">
-												
+												<label class="control-label" for="addUsername" style="display: none;"></label>				
 												</div>
 										</div>
 											
@@ -252,7 +252,7 @@
 											<label for="firstname" class="col-sm-3 control-label">密码</label>
 											<div class="col-sm-7">
 												<input type="password" class="form-control" id="addPwd"  placeholder="请输入密码">
-
+													<label class="control-label" for="addPwd" style="display: none;"></label>	
 											</div>
 										</div>
 											
@@ -302,7 +302,7 @@
 												<div class="col-sm-7">
 													<input type="hidden" id="updateId">
 													<input type="text" class="form-control" id="updateUsername">
-												
+												<label class="control-label" for="updateUsername" style="display: none;"></label>	
 												</div>
 										</div>
 											
@@ -311,7 +311,7 @@
 											<label for="firstname" class="col-sm-3 control-label">密码</label>
 											<div class="col-sm-7">
 												<input type="password" class="form-control" id="updatePwd"  placeholder="请输入密码">
-
+												<label class="control-label" for="updatePwd" style="display: none;"></label>	
 											</div>
 										</div>
 										
@@ -364,7 +364,7 @@
 								<label for="firstname" class="col-sm-3 control-label">原密码</label>
 								<div class="col-sm-7">
 									<input type="password" class="form-control" id="oldPwd"  placeholder="请输入原密码">
-												
+									<label class="control-label" for="oldPwd" style="display: none;"></label>				
 								</div>
 							</div>	
 							
@@ -372,7 +372,7 @@
 								<label for="firstname" class="col-sm-3 control-label">新密码</label>
 								<div class="col-sm-7">
 									<input type="password" class="form-control" id="newPwd"  placeholder="请输入新密码">
-												
+										<label class="control-label" for="newPwd" style="display: none;"></label>				
 								</div>
 							</div>	
 							
@@ -380,7 +380,7 @@
 								<label for="firstname" class="col-sm-3 control-label">确认密码</label>
 								<div class="col-sm-7">
 									<input type="password" class="form-control" id="confirmPwd"  placeholder="请输入确认密码">
-												
+										<label class="control-label" for="confirmPwd" style="display: none;"></label>				
 								</div>
 							</div>	
 								<!--正文-->

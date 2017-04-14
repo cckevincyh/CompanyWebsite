@@ -148,7 +148,7 @@
 								<label for="firstname" class="col-sm-3 control-label">原密码</label>
 								<div class="col-sm-7">
 									<input type="password" class="form-control" id="oldPwd"  placeholder="请输入原密码">
-												
+										<label class="control-label" for="oldPwd" style="display: none;"></label>					
 								</div>
 							</div>	
 							
@@ -156,7 +156,7 @@
 								<label for="firstname" class="col-sm-3 control-label">新密码</label>
 								<div class="col-sm-7">
 									<input type="password" class="form-control" id="newPwd"  placeholder="请输入新密码">
-												
+										<label class="control-label" for="newPwd" style="display: none;"></label>				
 								</div>
 							</div>	
 							
@@ -164,7 +164,7 @@
 								<label for="firstname" class="col-sm-3 control-label">确认密码</label>
 								<div class="col-sm-7">
 									<input type="password" class="form-control" id="confirmPwd"  placeholder="请输入确认密码">
-												
+									<label class="control-label" for="confirmPwd" style="display: none;"></label>							
 								</div>
 							</div>	
 								<!--正文-->

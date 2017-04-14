@@ -4,6 +4,11 @@ $(function () {
 	
 
     $('#updateNotice').click(function () {
+    	
+    	if(!validUpdateNotice()){
+    		return ;
+    	}
+    	
 	var postdata = "id="+$.trim($("#updateId").val())+"&title="+$.trim($("#updateTitle").val())+"&content="+ encodeURIComponent(updateEditor.html());
 	ajax(
     		  {
@@ -88,7 +93,41 @@ function updateNotice(id){
 
 }
 
+function validUpdateNotice() {
+    var flag = true;
 
+    var title = $.trim($("#updateTitle").val());
+
+    if (title == "") {
+        $('#updateTitle').parent().addClass("has-error");
+        $('#updateTitle').next().text("请输入公告标题");
+        $("#updateTitle").next().show();
+        flag = false;
+    }else {
+        $('#updateTitle').parent().removeClass("has-error");
+        $('#updateTitle').next().text("");
+        $("#updateTitle").next().hide();
+    }
+	
+    
+    var content = updateEditor.html();
+    if (content == "") {
+        $('#updateContent').parent().addClass("has-error");
+        $('#updateContent').next().text("请输入公告内容");
+        $("#updateContent").next().show();
+        flag = false;
+    }else {
+        $('#updateContent').parent().removeClass("has-error");
+        $('#updateContent').next().text("");
+        $("#updateContent").next().hide();
+    }
+    
+    
+ 
+
+	
+    return flag;
+}
 
 function showInfo(msg) {
     $("#div_info").text(msg);

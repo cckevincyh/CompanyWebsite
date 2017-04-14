@@ -4,6 +4,10 @@ $(function () {
 
     $('#addNotice').click(function () {
 
+    	if(!validAddNotice()){
+    		return ;
+    	}
+    	
 	var postdata = "title="+$.trim($("#addTitle").val())+"&content="+ encodeURIComponent(addEditor.html());
 	ajax(
     		  {
@@ -69,6 +73,41 @@ KindEditor.ready(function(K) {
 
 
 
+function validAddNotice() {
+    var flag = true;
+
+    var title = $.trim($("#addTitle").val());
+
+    if (title == "") {
+        $('#addTitle').parent().addClass("has-error");
+        $('#addTitle').next().text("请输入公告标题");
+        $("#addTitle").next().show();
+        flag = false;
+    }else {
+        $('#addTitle').parent().removeClass("has-error");
+        $('#addTitle').next().text("");
+        $("#addTitle").next().hide();
+    }
+	
+    
+    var content = addEditor.html();
+    if (content == "") {
+        $('#addContent').parent().addClass("has-error");
+        $('#addContent').next().text("请输入公告内容");
+        $("#addContent").next().show();
+        flag = false;
+    }else {
+        $('#addContent').parent().removeClass("has-error");
+        $('#addContent').next().text("");
+        $("#addContent").next().hide();
+    }
+    
+    
+ 
+
+	
+    return flag;
+}
 
 
 

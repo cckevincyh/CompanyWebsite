@@ -3,6 +3,11 @@ $(function () {
 	
 
     $('#addArticle').click(function () {
+    	
+    	if(!validAddArticle()){
+    		return ;
+    	}
+    	
     	   //encodeURIComponent() 函数可把字符串作为 URI 组件进行编码。
 //    	该方法不会对 ASCII 字母和数字进行编码，也不会对这些 ASCII 标点符号进行编码： - _ . ! ~ * ' ( ) 。
 //    	其他字符（比如 ：;/?:@&=+$,# 这些用于分隔 URI 组件的标点符号），都是由一个或多个十六进制的转义序列替换的。
@@ -73,6 +78,42 @@ KindEditor.ready(function(K) {
 
 
 
+
+function validAddArticle() {
+    var flag = true;
+
+    var title = $.trim($("#addTitle").val());
+
+    if (title == "") {
+        $('#addTitle').parent().addClass("has-error");
+        $('#addTitle').next().text("请输入新闻标题");
+        $("#addTitle").next().show();
+        flag = false;
+    }else {
+        $('#addTitle').parent().removeClass("has-error");
+        $('#addTitle').next().text("");
+        $("#addTitle").next().hide();
+    }
+	
+    
+    var content = addEditor.html();
+    if (content == "") {
+        $('#addContent').parent().addClass("has-error");
+        $('#addContent').next().text("请输入新闻内容");
+        $("#addContent").next().show();
+        flag = false;
+    }else {
+        $('#addContent').parent().removeClass("has-error");
+        $('#addContent').next().text("");
+        $("#addContent").next().hide();
+    }
+    
+    
+ 
+
+	
+    return flag;
+}
 
 
 function showInfo(msg) {

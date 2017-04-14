@@ -102,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="container">
 								<h1 style="font-weight:bold;">企业公告</h1>
 								<p id="noticeTitle"></p>
-								<p id="noticeContent"></p>
+								
 								<p><a class="btn btn-primary btn-lg" role="button" href="${pageContext.request.contextPath}/noticeAction_findNoticeByPage.action">
 									查看更多</a>
 								</p>
@@ -114,7 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="container">
 									<h1 style="font-weight:bold;">企业新闻</h1>
 									<p id="articleTitle"></p>
-									<p id="articleContent"></p>
+								
 									<p><a class="btn btn-primary btn-lg" role="button" href="${pageContext.request.contextPath}/articleAction_findArticleByPage.action">
 										查看更多</a>
 									</p>

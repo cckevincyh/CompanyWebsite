@@ -40,18 +40,19 @@
             </div>
             <form class="bootstrap-admin-login-form">
              <div class="col-lg-12">
-                <div class="form-group">
-                    <label class="control-label" for="username">账&nbsp;号</label>
+              <label class="firstname" for="username">账&nbsp;号</label>
+                <div class="form-group">   
                     <input type="text" class="form-control" id="username" placeholder="会员用户名"/>
                     <label class="control-label" for="username" style="display:none;"></label>
+                   
                 </div>
+                 <label class="firstname" for="pwd">密&nbsp;码</label>
                 <div class="form-group">
-                    <label class="control-label" for="pwd">密&nbsp;码</label>
                     <input type="password" class="form-control" id="pwd" placeholder="密码"/>
                     <label class="control-label" for="pwd" style="display:none;"></label>
                 </div>
+                 <label class="firstname" for="firstname">确&nbsp;认&nbsp;密&nbsp;码</label>
                 <div class="form-group">
-                    <label class="control-label" for="cpwd">确&nbsp;认&nbsp;密&nbsp;码</label>
                     <input type="password" class="form-control" id="cpwd" placeholder="密码"/>
                     <label class="control-label" for="cpwd" style="display:none;"></label>
                 </div>
@@ -59,14 +60,20 @@
                 <div class="col-lg-6">
                 <div class="form-group">
                     <input type="text" class="form-control" id="vCode" placeholder="验证码"/>
-                    <label class="control-label" for="vCode" style="display:none;"></label>
+                   
                 </div>
                 </div>
                  <div class="col-lg-6">
                 <div class="form-group">
                     <img src="${pageContext.request.contextPath}/userAction_getVerifyCode.action" id="vCode_img" width="140" height="39" alt="验证码" title="看不清可单击图片刷新" onClick="javascript:_change()" style="cursor:hand"/>
+               		 <label class="control-label" for="vCode_img" style="display:none;"></label>
+               		 
                 </div>
+
                 </div>
+                 &nbsp;&nbsp;&nbsp;  <input type="hidden" class="form-control" id="Code" placeholder="验证码"/>
+                <label class="control-label" for="Code" style="display:none;"></label>
+                 <br>
                 &nbsp;&nbsp;&nbsp;
                 <input type="button" class="btn btn-lg btn-primary" id="regist_submit" value="注&nbsp;&nbsp;&nbsp;&nbsp;册"/>
             	<a href="${pageContext.request.contextPath}/userLogin.jsp">已经是会员?去登录</a>

@@ -68,29 +68,29 @@
                                     <div class="col-lg-8 form-group" >
                                         <label class="col-lg-4 control-label" for="query_ano">姓名</label>
                                         <div class="col-lg-8">
-                                            <input class="form-control"  type="text" id="name">
-                                            <label class="control-label" for="query_ano" style="display: none;"></label>
+                                            <input class="form-control"  type="text" id="name" placeholder="请输入姓名">
+                                            <label class="control-label" for="name" style="display: none;"></label>
                                         </div>
                                     </div>
                                      <div class="col-lg-8 form-group" >
                                         <label class="col-lg-4 control-label" for="query_ano">联系电话</label>
                                         <div class="col-lg-8">
-                                            <input class="form-control"  type="text" id="phone">
-                                            <label class="control-label" for="query_ano" style="display: none;"></label>
+                                            <input class="form-control"  type="text" id="phone" placeholder="请输入联系电话">
+                                            <label class="control-label" for="phone" style="display: none;"></label>
                                         </div>
                                     </div>
                                      <div class="col-lg-8 form-group" >
                                         <label class="col-lg-4 control-label" for="query_ano">邮箱</label>
                                         <div class="col-lg-8">
-                                            <input class="form-control"  type="text" id="email">
-                                            <label class="control-label" for="query_ano" style="display: none;"></label>
+                                            <input class="form-control"  type="text" id="email" placeholder="请输入邮箱">
+                                            <label class="control-label" for="email" style="display: none;"></label>
                                         </div>
                                     </div>
                 					<div class="col-lg-8 form-group" >
                                         <label class="col-lg-4 control-label" for="query_ano">留言内容</label>
                                         <div class="col-lg-8">
-                                           <textarea class="form-control" id="content" rows="5"  placeholder="留言内容"></textarea>
-                                            <label class="control-label" for="query_ano" style="display: none;"></label>
+                                           <textarea class="form-control" id="content" rows="5"  placeholder="请输入留言内容"></textarea>
+                                            <label class="control-label" for="content" style="display: none;"></label>
                                         </div>
                                     </div>
                                     

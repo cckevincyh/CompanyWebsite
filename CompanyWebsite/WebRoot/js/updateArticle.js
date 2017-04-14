@@ -4,6 +4,12 @@ $(function () {
 	
 
     $('#updateArticle').click(function () {
+    	
+    	
+    	if(!validUpdateArticle()){
+    		return ;
+    	}
+    	
    //encodeURIComponent() 函数可把字符串作为 URI 组件进行编码。
 //    	该方法不会对 ASCII 字母和数字进行编码，也不会对这些 ASCII 标点符号进行编码： - _ . ! ~ * ' ( ) 。
 //    	其他字符（比如 ：;/?:@&=+$,# 这些用于分隔 URI 组件的标点符号），都是由一个或多个十六进制的转义序列替换的。
@@ -92,6 +98,45 @@ function updateArticle(id){
 			
 
 }
+
+
+
+function validUpdateArticle() {
+    var flag = true;
+
+    var title = $.trim($("#updateTitle").val());
+
+    if (title == "") {
+        $('#updateTitle').parent().addClass("has-error");
+        $('#updateTitle').next().text("请输入新闻标题");
+        $("#updateTitle").next().show();
+        flag = false;
+    }else {
+        $('#updateTitle').parent().removeClass("has-error");
+        $('#updateTitle').next().text("");
+        $("#updateTitle").next().hide();
+    }
+	
+    
+    var content = updateEditor.html();
+    if (content == "") {
+        $('#updateContent').parent().addClass("has-error");
+        $('#updateContent').next().text("请输入新闻内容");
+        $("#updateContent").next().show();
+        flag = false;
+    }else {
+        $('#updateContent').parent().removeClass("has-error");
+        $('#updateContent').next().text("");
+        $("#updateContent").next().hide();
+    }
+    
+    
+ 
+
+	
+    return flag;
+}
+
 
 
 

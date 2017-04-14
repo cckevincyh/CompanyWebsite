@@ -257,7 +257,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											<label for="firstname" class="col-sm-2 control-label">产品名称</label>
 												<div class="col-sm-9">
 													<input type="text" class="form-control" id="addName"  placeholder="请输入产品名称">
-												
+												<label class="control-label" for="addName" style="display: none;"></label>	
 												</div>
 										</div>
 											
@@ -265,6 +265,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											<label for="firstname" class="col-sm-2 control-label">产品描述</label>
 											<div class="col-sm-9">
 											<textarea class="form-control" id="addDesc" rows="10"  placeholder="请输入产品名称"></textarea>
+											<label class="control-label" for="addDesc" style="display: none;"></label>	
 											</div>
 										</div>
 										
@@ -277,6 +278,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											<input type="hidden" id="addImg"/>
 											<!--id是给jquery使用的，name是给后台action使用的，必须和后台的名字相同！！ -->
 											<input type="file" id="addUpload" name="upload"/><br/>
+											<label class="control-label" for="addUpload" style="display: none;"></label>	
 										    <p class="help-block"><!--上传成功后图片显示的位置 --><img class="img-rounded" width="100" height="100" id="img1" alt="上传成功" src="" />请上传产品图片</p>
 											</div>
 										</div>
@@ -327,7 +329,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<div class="col-sm-9">
 													<input type="hidden" id="updateId">
 													<input type="text" class="form-control" id="updateName">
-												
+												<label class="control-label" for="updateName" style="display: none;"></label>	
 												</div>
 										</div>
 											
@@ -336,6 +338,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											<label for="firstname" class="col-sm-2 control-label">产品描述</label>
 											<div class="col-sm-9">
 													<textarea class="form-control" id="updateDesc" rows="10"  ></textarea>
+													<label class="control-label" for="updateDesc" style="display: none;"></label>	
 											</div>
 										</div>
 										
@@ -349,6 +352,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											<input type="hidden" id="updateImg"/>
 											<!--id是给jquery使用的，name是给后台action使用的，必须和后台的名字相同！！ -->
 											<input type="file" id="updateUpload" name="upload"/><br/>
+											<label class="control-label" for="updateUpload" style="display: none;"></label>	
 										    <p class="help-block"><img class="img-rounded" width="100" height="100" id="img2" alt="上传成功" src="" />请上传产品图片</p>
 											</div>
 										</div>
@@ -402,7 +406,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<label for="firstname" class="col-sm-3 control-label">原密码</label>
 								<div class="col-sm-7">
 									<input type="password" class="form-control" id="oldPwd"  placeholder="请输入原密码">
-												
+									<label class="control-label" for="oldPwd" style="display: none;"></label>				
 								</div>
 							</div>	
 							
@@ -410,7 +414,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<label for="firstname" class="col-sm-3 control-label">新密码</label>
 								<div class="col-sm-7">
 									<input type="password" class="form-control" id="newPwd"  placeholder="请输入新密码">
-												
+										<label class="control-label" for="newPwd" style="display: none;"></label>			
 								</div>
 							</div>	
 							
@@ -418,7 +422,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<label for="firstname" class="col-sm-3 control-label">确认密码</label>
 								<div class="col-sm-7">
 									<input type="password" class="form-control" id="confirmPwd"  placeholder="请输入确认密码">
-												
+										<label class="control-label" for="confirmPwd" style="display: none;"></label>				
 								</div>
 							</div>	
 								<!--正文-->

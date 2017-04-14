@@ -100,28 +100,28 @@
                                         <label class="col-lg-4 control-label" for="query_ano">企业联系方式</label>
                                         <div class="col-lg-8">
                                             <input class="form-control"  type="text" id="phone" name="phone" value="<s:property value="#request.info.phone"/>">
-                                            <label class="control-label" for="query_ano" style="display: none;"></label>
+                                            <label class="control-label" for="phone" style="display: none;"></label>
                                         </div>
                                     </div>
                                      <div class="col-lg-9 form-group">
                                         <label class="col-lg-4 control-label" for="query_ano">企业邮箱</label>
                                         <div class="col-lg-8">
                                             <input class="form-control" type="text" id="email" name="email" value="<s:property value="#request.info.email"/>">
-                                            <label class="control-label" for="query_ano" style="display: none;"></label>
+                                            <label class="control-label" for="email" style="display: none;"></label>
                                         </div>
                                     </div>
                                      <div class="col-lg-9 form-group">
                                         <label class="col-lg-4 control-label" for="query_ano">企业位置</label>
                                         <div class="col-lg-8">
                                             <input class="form-control"  type="text" id="location" name="location" value="<s:property value="#request.info.location"/>">
-                                            <label class="control-label" for="query_ano" style="display: none;"></label>
+                                            <label class="control-label" for="location" style="display: none;"></label>
                                         </div>
                                     </div>
                                     <div class="col-lg-9 form-group">
                                         <label class="col-lg-4 control-label" for="query_ano">企业描述</label>
                                         <div class="col-lg-8">
                                             <input class="form-control"  type="text" id="cdesc" name="cdesc" value="<s:property value="#request.info.cdesc"/>">
-                                            <label class="control-label" for="query_ano" style="display: none;"></label>
+                                            <label class="control-label" for="cdesc" style="display: none;"></label>
                                         </div>
                                     </div>
                
@@ -165,7 +165,7 @@
 								<label for="firstname" class="col-sm-3 control-label">原密码</label>
 								<div class="col-sm-7">
 									<input type="password" class="form-control" id="oldPwd"  placeholder="请输入原密码">
-												
+									  <label class="control-label" for="oldPwd" style="display: none;"></label>			
 								</div>
 							</div>	
 							
@@ -173,7 +173,7 @@
 								<label for="firstname" class="col-sm-3 control-label">新密码</label>
 								<div class="col-sm-7">
 									<input type="password" class="form-control" id="newPwd"  placeholder="请输入新密码">
-												
+										<label class="control-label" for="newPwd" style="display: none;"></label>				
 								</div>
 							</div>	
 							
@@ -181,7 +181,7 @@
 								<label for="firstname" class="col-sm-3 control-label">确认密码</label>
 								<div class="col-sm-7">
 									<input type="password" class="form-control" id="confirmPwd"  placeholder="请输入确认密码">
-												
+										<label class="control-label" for="confirmPwd" style="display: none;"></label>			
 								</div>
 							</div>	
 								<!--正文-->
