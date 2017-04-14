@@ -114,7 +114,7 @@ body {
 		document.getElementById("num").innerHTML=num;
 		if(num<0){
 			document.getElementById("num").innerHTML=0;
-			location.href="login.jsp";
+			location.href="userLogin.jsp";
 			}
 		}
 	setInterval("redirect()", 1000);
