@@ -3,6 +3,8 @@ package com.cc.company.action;
 import java.io.File;
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletResponse;
+
 import net.sf.json.JSONObject;
 
 import org.apache.commons.io.FileUtils;
@@ -35,6 +37,8 @@ public class FileUploadAction {
     
     
 	public void fileUpload() throws IOException{
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("application/json;charset=utf-8");
         //设置上传的路径
         String path = ServletActionContext.getServletContext().getRealPath("/ProductImg");
         uploadFileName = +System.currentTimeMillis()+"_"+uploadFileName;
